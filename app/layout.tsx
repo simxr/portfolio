@@ -13,7 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://simar-ahuja-cloud.simarahuja2307.chatgpt.site'),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ??
+      'https://simar-ahuja-cloud.simarahuja2307.chatgpt.site',
+  ),
   title: 'Simar Ahuja | Cloud Automation Engineer',
   description: 'Cloud automation engineer building secure AWS, EKS, Terraform, and GitOps systems.',
   openGraph: {
