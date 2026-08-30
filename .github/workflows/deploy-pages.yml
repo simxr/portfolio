@@ -43,6 +43,12 @@ jobs:
           NEXT_PUBLIC_SITE_URL: https://simxr.github.io/portfolio/
           NEXT_PUBLIC_BASE_PATH: /portfolio
 
+      - name: Normalize Pages asset paths
+        run: |
+          mv dist/client/portfolio/_next dist/client/_next
+          rmdir dist/client/portfolio
+          touch dist/client/.nojekyll
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
