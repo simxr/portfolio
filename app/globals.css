@@ -112,6 +112,34 @@ button { color: inherit; font: inherit; }
 .terminal-fragment { position: absolute; right: 7%; bottom: 5%; left: 7%; display: flex; justify-content: space-between; gap: 12px; border-top: 1px solid rgba(242,234,219,.22); padding-top: 14px; font: 10px monospace; color: rgba(242,234,219,.65); }
 .terminal-ok { color: var(--mint); }
 
+.ascii-portrait { background: #0a1214; }
+.ascii-portrait canvas { position: absolute; inset: 0; z-index: 1; display: block; width: 100%; height: 100%; }
+.ascii-scanline {
+  position: absolute;
+  z-index: 2;
+  inset: -35% 0 auto;
+  height: 24%;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(242,234,219,.09), transparent);
+  animation: ascii-scan 7s linear infinite;
+}
+.ascii-caption {
+  position: absolute;
+  z-index: 3;
+  right: 5%;
+  bottom: 4%;
+  left: 5%;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(242,234,219,.34);
+  font: 700 8px/1.2 monospace;
+  letter-spacing: .08em;
+}
+.ascii-caption span { color: rgba(242,234,219,.58); }
+.ascii-caption b { color: var(--paper); }
+
 .hero-socials { position: absolute; z-index: 4; left: 3.5vw; bottom: 42px; display: flex; gap: 18px; }
 .hero-socials a { display: grid; place-items: center; width: 36px; aspect-ratio: 1; border: 1px solid rgba(255,255,255,.36); border-radius: 50%; transition: background .2s, color .2s; }
 .hero-socials a:hover { background: var(--paper); color: var(--red); }
@@ -259,6 +287,7 @@ button { color: inherit; font: inherit; }
 .giant-name { position: absolute; right: -1.5vw; bottom: -3vw; left: -1.5vw; font-family: Impact, 'Arial Narrow', sans-serif; font-size: 26vw; line-height: .68; text-align: center; color: rgba(242,234,219,.92); pointer-events: none; }
 
 @keyframes word-in { from { opacity: 0; transform: translateY(16px); } }
+@keyframes ascii-scan { to { transform: translateY(650%); } }
 
 @keyframes orbit { to { transform: translate(-50%,-50%) rotate(360deg); } }
 
@@ -270,7 +299,7 @@ button { color: inherit; font: inherit; }
   .hero h1 { font-size: clamp(72px, 24vw, 124px); }
   .hero h1 span { margin-left: .12em; }
   .hero-intro { margin: 24px 0 0; max-width: 310px; font-size: 18px; }
-  .systems-portrait { position: absolute; inset: 24% -22% auto auto; width: 76vw; opacity: .63; }
+  .systems-portrait { position: absolute; inset: 24% -22% auto auto; width: 76vw; opacity: .86; }
   .hero-socials { left: 20px; bottom: 30px; }
   .scroll-cue { right: 20px; bottom: 35px; }
   .statement { min-height: 58vh; }

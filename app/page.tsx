@@ -22,10 +22,114 @@ import {
   Terminal,
   X,
 } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const roles = ['Cloud Automation', 'Platform Engineering', 'SRE', 'Infrastructure as Code'];
 const contactWords = ['systems', 'reliability', 'impact'];
+
+function AsciiPortrait() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const image = new Image();
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+    let animationFrame = 0;
+    const ramp = ' .,:;irsXA253hMHGS#9B&@';
+
+    const draw = () => {
+      const bounds = canvas.getBoundingClientRect();
+      if (!image.complete || !bounds.width || !bounds.height) return;
+
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(bounds.width * pixelRatio);
+      canvas.height = Math.round(bounds.height * pixelRatio);
+
+      const columns = Math.max(64, Math.floor(bounds.width / 6));
+      const fontSize = bounds.width / columns / 0.6;
+      const lineHeight = fontSize * 0.78;
+      const rows = Math.ceil(bounds.height / lineHeight);
+      const sampler = document.createElement('canvas');
+      sampler.width = columns;
+      sampler.height = rows;
+      const sampleContext = sampler.getContext('2d', { willReadFrequently: true });
+      const context = canvas.getContext('2d');
+      if (!sampleContext || !context) return;
+
+      const sourceRatio = image.width / image.height;
+      const targetRatio = columns / rows;
+      let sourceWidth = image.width;
+      let sourceHeight = image.height;
+      let sourceX = 0;
+      let sourceY = 0;
+
+      if (sourceRatio > targetRatio) {
+        sourceWidth = image.height * targetRatio;
+        sourceX = (image.width - sourceWidth) / 2;
+      } else {
+        sourceHeight = image.width / targetRatio;
+        sourceY = (image.height - sourceHeight) / 2;
+      }
+
+      sampleContext.drawImage(
+        image,
+        sourceX,
+        sourceY,
+        sourceWidth,
+        sourceHeight,
+        0,
+        0,
+        columns,
+        rows,
+      );
+
+      const pixels = sampleContext.getImageData(0, 0, columns, rows).data;
+      context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+      context.clearRect(0, 0, bounds.width, bounds.height);
+      context.font = `700 ${fontSize}px ui-monospace, SFMono-Regular, Consolas, monospace`;
+      context.textBaseline = 'top';
+
+      for (let row = 0; row < rows; row += 1) {
+        for (let column = 0; column < columns; column += 1) {
+          const offset = (row * columns + column) * 4;
+          const red = pixels[offset];
+          const green = pixels[offset + 1];
+          const blue = pixels[offset + 2];
+          const brightness = (red * 0.299 + green * 0.587 + blue * 0.114) / 255;
+          const character = ramp[Math.min(ramp.length - 1, Math.floor(brightness * ramp.length))];
+          const lightness = 32 + brightness * 54;
+          context.fillStyle = `hsl(${18 + brightness * 20} 88% ${lightness}%)`;
+          context.fillText(character, column * fontSize * 0.6, row * lineHeight);
+        }
+      }
+    };
+
+    const scheduleDraw = () => {
+      window.cancelAnimationFrame(animationFrame);
+      animationFrame = window.requestAnimationFrame(draw);
+    };
+    const resizeObserver = new ResizeObserver(scheduleDraw);
+    resizeObserver.observe(canvas);
+    image.addEventListener('load', scheduleDraw);
+    image.src = `${basePath}/portrait-source.png`;
+
+    return () => {
+      resizeObserver.disconnect();
+      image.removeEventListener('load', scheduleDraw);
+      window.cancelAnimationFrame(animationFrame);
+    };
+  }, []);
+
+  return (
+    <div className="systems-portrait ascii-portrait" aria-label="ASCII portrait of Simar Ahuja">
+      <canvas ref={canvasRef} role="img" aria-label="ASCII portrait of Simar Ahuja" />
+      <div className="ascii-scanline" aria-hidden="true" />
+      <div className="ascii-caption"><span>ASCII / SOURCE PORTRAIT</span><b>SIMAR.AHUJA</b></div>
+    </div>
+  );
+}
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -93,19 +197,7 @@ export default function Home() {
           <p className="hero-intro">I engineer secure cloud foundations that let teams ship with confidence.</p>
         </div>
 
-        <div className="systems-portrait" aria-label="Cloud platform architecture">
-          <div className="orbit orbit-one" />
-          <div className="orbit orbit-two" />
-          <div className="systems-core"><span>CAT</span><strong>Cloud</strong></div>
-          <span className="system-node node-aws">AWS</span>
-          <span className="system-node node-eks">EKS</span>
-          <span className="system-node node-tf">Terraform</span>
-          <span className="system-node node-gitops">GitOps</span>
-          <div className="terminal-fragment" aria-hidden="true">
-            <span>$ terraform apply</span>
-            <span className="terminal-ok">platform ready</span>
-          </div>
-        </div>
+        <AsciiPortrait />
 
         <div className="hero-socials" aria-label="Social links">
           <a href="https://github.com/simxr" target="_blank" rel="noreferrer" aria-label="GitHub"><span className="brand-mark">GH</span></a>
