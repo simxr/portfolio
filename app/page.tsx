@@ -37,8 +37,6 @@ function AsciiPortrait() {
     const image = new Image();
     const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
     let animationFrame = 0;
-    const ramp = ' .,:;irsXA253hMHGS#9B&@';
-
     const draw = () => {
       const bounds = canvas.getBoundingClientRect();
       if (!image.complete || !bounds.width || !bounds.height) return;
@@ -47,10 +45,9 @@ function AsciiPortrait() {
       canvas.width = Math.round(bounds.width * pixelRatio);
       canvas.height = Math.round(bounds.height * pixelRatio);
 
-      const columns = Math.max(64, Math.floor(bounds.width / 6));
-      const fontSize = bounds.width / columns / 0.6;
-      const lineHeight = fontSize * 0.78;
-      const rows = Math.ceil(bounds.height / lineHeight);
+      const spacing = Math.max(5.5, Math.min(8, bounds.width / 78));
+      const columns = Math.ceil(bounds.width / spacing);
+      const rows = Math.ceil(bounds.height / spacing);
       const sampler = document.createElement('canvas');
       sampler.width = columns;
       sampler.height = rows;
@@ -88,8 +85,6 @@ function AsciiPortrait() {
       const pixels = sampleContext.getImageData(0, 0, columns, rows).data;
       context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
       context.clearRect(0, 0, bounds.width, bounds.height);
-      context.font = `700 ${fontSize}px ui-monospace, SFMono-Regular, Consolas, monospace`;
-      context.textBaseline = 'top';
 
       for (let row = 0; row < rows; row += 1) {
         for (let column = 0; column < columns; column += 1) {
@@ -98,10 +93,21 @@ function AsciiPortrait() {
           const green = pixels[offset + 1];
           const blue = pixels[offset + 2];
           const brightness = (red * 0.299 + green * 0.587 + blue * 0.114) / 255;
-          const character = ramp[Math.min(ramp.length - 1, Math.floor(brightness * ramp.length))];
-          const lightness = 32 + brightness * 54;
-          context.fillStyle = `hsl(${18 + brightness * 20} 88% ${lightness}%)`;
-          context.fillText(character, column * fontSize * 0.6, row * lineHeight);
+          const radius = spacing * (0.11 + brightness * 0.38);
+          const boostedRed = Math.min(255, red * 1.08 + 16);
+          const boostedGreen = Math.min(255, green * 1.02 + 7);
+          const boostedBlue = Math.min(255, blue * 0.9 + 3);
+
+          context.beginPath();
+          context.arc(
+            (column + 0.5) * spacing,
+            (row + 0.5) * spacing,
+            radius,
+            0,
+            Math.PI * 2,
+          );
+          context.fillStyle = `rgb(${boostedRed} ${boostedGreen} ${boostedBlue})`;
+          context.fill();
         }
       }
     };
@@ -123,10 +129,10 @@ function AsciiPortrait() {
   }, []);
 
   return (
-    <div className="systems-portrait ascii-portrait" aria-label="ASCII portrait of Simar Ahuja">
-      <canvas ref={canvasRef} role="img" aria-label="ASCII portrait of Simar Ahuja" />
+    <div className="systems-portrait ascii-portrait" aria-label="Halftone portrait of Simar Ahuja">
+      <canvas ref={canvasRef} role="img" aria-label="Halftone dot portrait of Simar Ahuja" />
       <div className="ascii-scanline" aria-hidden="true" />
-      <div className="ascii-caption"><span>ASCII / SOURCE PORTRAIT</span><b>SIMAR.AHUJA</b></div>
+      <div className="ascii-caption"><span>HALFTONE / SOURCE PORTRAIT</span><b>SIMAR.AHUJA</b></div>
     </div>
   );
 }
