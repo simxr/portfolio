@@ -1,0 +1,264 @@
+'use client';
+
+import {
+  ArrowDown,
+  ArrowRight,
+  ArrowUpRight,
+  Award,
+  Cloud,
+  Database,
+  DollarSign,
+  ExternalLink,
+  Gauge,
+  GitBranch,
+  GitPullRequest,
+  GraduationCap,
+  Mail,
+  Menu,
+  Server,
+  Shield,
+  Terminal,
+  X,
+} from 'lucide-react';
+import { useEffect, useState } from 'react';
+
+const roles = ['Cloud Automation', 'Platform Engineering', 'SRE', 'Infrastructure as Code'];
+const contactWords = ['systems', 'reliability', 'impact'];
+
+export default function Home() {
+  const [mounted, setMounted] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [wordIndex, setWordIndex] = useState(0);
+
+  useEffect(() => setMounted(true), []);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setWordIndex((current) => (current + 1) % contactWords.length);
+    }, 2300);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMenuOpen(false);
+    };
+    window.addEventListener('keydown', closeOnEscape);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [menuOpen]);
+
+  const closeMenu = () => setMenuOpen(false);
+
+  return (
+    <main className={mounted ? 'site is-ready' : 'site'}>
+      <header className="site-nav">
+        <button className="nav-action" type="button" onClick={() => setMenuOpen(true)} aria-label="Open navigation">
+          <Menu size={18} strokeWidth={1.7} />
+          <span>Menu</span>
+        </button>
+        <a className="wordmark" href="#home" aria-label="Simar Ahuja, home">
+          Simar<span>Ahuja</span>
+        </a>
+        <a className="nav-action nav-contact" href="mailto:simarahuja@outlook.com">
+          Let&apos;s talk <ArrowUpRight size={17} />
+        </a>
+      </header>
+
+      <div className={menuOpen ? 'menu-overlay is-open' : 'menu-overlay'} aria-hidden={!menuOpen}>
+        <button className="menu-close" type="button" onClick={closeMenu} aria-label="Close navigation">
+          Close <X size={18} />
+        </button>
+        <nav className="overlay-links" aria-label="Primary navigation">
+          <a href="#home" onClick={closeMenu}>Home</a>
+          <a href="#impact" onClick={closeMenu}>Impact</a>
+          <a href="#work" onClick={closeMenu}>Projects</a>
+          <a href="#experience" onClick={closeMenu}>Experience</a>
+        </nav>
+        <div className="menu-reachout">
+          <span>Reach out</span>
+          <a href="mailto:simarahuja@outlook.com">simarahuja@outlook.com</a>
+        </div>
+      </div>
+
+      <section className="hero" id="home">
+        <div className="hero-copy">
+          <p className="eyebrow">Cloud Automation Engineer · Gurgaon, India</p>
+          <h1>Simar<span>Ahuja</span></h1>
+          <p className="hero-intro">I engineer secure cloud foundations that let teams ship with confidence.</p>
+        </div>
+
+        <div className="systems-portrait" aria-label="Cloud platform architecture">
+          <div className="orbit orbit-one" />
+          <div className="orbit orbit-two" />
+          <div className="systems-core"><span>CAT</span><strong>Cloud</strong></div>
+          <span className="system-node node-aws">AWS</span>
+          <span className="system-node node-eks">EKS</span>
+          <span className="system-node node-tf">Terraform</span>
+          <span className="system-node node-gitops">GitOps</span>
+          <div className="terminal-fragment" aria-hidden="true">
+            <span>$ terraform apply</span>
+            <span className="terminal-ok">platform ready</span>
+          </div>
+        </div>
+
+        <div className="hero-socials" aria-label="Social links">
+          <a href="https://github.com/simxr" target="_blank" rel="noreferrer" aria-label="GitHub"><span className="brand-mark">GH</span></a>
+          <a href="https://www.linkedin.com/in/simarahuja/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><span className="brand-mark">in</span></a>
+        </div>
+
+        <a className="scroll-cue" href="#statement" aria-label="Scroll to introduction"><span>Explore</span><ArrowDown size={18} /></a>
+      </section>
+
+      <section className="statement" id="statement">
+        <p><em>from</em> infrastructure</p>
+        <p>to dependable systems.</p>
+      </section>
+
+      <section className="impact" id="impact">
+        <div className="section-kicker"><span>01</span> Production impact</div>
+        <div className="impact-intro">
+          <h2>Reliability you can measure.</h2>
+          <p>At ION&apos;s Core Architecture Team, I build automation and standards for secure AWS and EKS deployments supporting financial markets and core banking workloads.</p>
+        </div>
+        <div className="metrics-strip">
+          <article>
+            <Gauge aria-hidden="true" />
+            <strong>99.96%</strong>
+            <span>Production EKS SLA supported</span>
+          </article>
+          <article>
+            <DollarSign aria-hidden="true" />
+            <strong>12-13%</strong>
+            <span>Cluster cost reduction</span>
+          </article>
+          <article>
+            <Server aria-hidden="true" />
+            <strong>~$1,000</strong>
+            <span>Saved per cluster monthly</span>
+          </article>
+        </div>
+        <div className="impact-method">
+          <span>Kubernetes right-sizing</span>
+          <span>Requests / limits analysis</span>
+          <span>Prometheus + Grafana</span>
+          <span>AWS Well-Architected</span>
+        </div>
+      </section>
+
+      <section className="roles-section" aria-label="Engineering focus areas">
+        <div className="roles-orbit" aria-hidden="true" />
+        <p className="roles-label">What I work across</p>
+        <div className="role-list">
+          {roles.map((role, index) => <span key={role} className={index === 0 ? 'active' : ''}>{role}</span>)}
+        </div>
+        <p className="roles-note">Secure by default. Observable in production. Built for the next team, not just the first deployment.</p>
+      </section>
+
+      <section className="featured-heading" id="work">
+        <span>02 · Selected work</span>
+        <h2>Featured<br/><em>systems</em></h2>
+      </section>
+
+      <section className="project project-upstream">
+        <div className="project-topline"><span>01 / Open-source intelligence</span><span>Go · Next.js · GitHub API</span></div>
+        <div className="project-grid">
+          <div className="project-copy">
+            <div className="project-mark"><GitBranch size={28} /><span>Upstream</span></div>
+            <h3>Find the right issue.<br/><em>Understand why.</em></h3>
+            <p>A targeted issue discovery tool for cloud-native engineers. It ranks curated opportunities by domain, skill signals, and contribution shape, then exposes every scoring reason.</p>
+            <div className="project-links">
+              <a href="https://simxr.github.io/Upstream/" target="_blank" rel="noreferrer">Live product <ExternalLink size={15} /></a>
+              <a href="https://github.com/simxr/Upstream" target="_blank" rel="noreferrer">Source <ArrowUpRight size={15} /></a>
+            </div>
+          </div>
+          <div className="upstream-visual" aria-label="Upstream data flow">
+            <div className="visual-toolbar"><span/><span/><span/><b>UPSTREAM / MATCH ENGINE</b></div>
+            <div className="issue-result">
+              <div className="issue-score">8.0</div>
+              <div><small>MATCHED OPPORTUNITY</small><strong>Improve Helm release validation</strong></div>
+            </div>
+            <div className="signal-row"><span>Kubernetes</span><span>Helm</span><span>bug-fix</span></div>
+            <div className="reason-list">
+              <p><b>+2</b> infrastructure-as-code domain</p>
+              <p><b>+1</b> matched Helm skill signal</p>
+              <p><b>+1</b> preferred contribution shape</p>
+            </div>
+            <div className="visual-footer"><span>Curated YAML</span><ArrowRight size={15}/><span>Go scorer</span><ArrowRight size={15}/><span>Static feed</span></div>
+          </div>
+        </div>
+        <div className="project-foot"><span>Deterministic scoring</span><span>Scheduled GitHub Actions refresh</span><span>No backend infrastructure</span></div>
+      </section>
+
+      <section className="project project-eee">
+        <div className="project-topline"><span>02 / Developer platform</span><span>Kubernetes · Argo CD · Terraform</span></div>
+        <div className="project-grid reverse">
+          <div className="eee-visual" aria-label="Ephemeral Environment Engine workflow">
+            <div className="pipeline-head"><GitPullRequest size={20}/><span>PR #42 opened</span><small>PREVIEW REQUESTED</small></div>
+            <div className="pipeline-line" />
+            <div className="pipeline-step"><GitBranch/><span><b>ApplicationSet</b><small>discovers pull request</small></span><i>01</i></div>
+            <div className="pipeline-step"><Cloud/><span><b>Terraform + LocalStack</b><small>provisions isolated resources</small></span><i>02</i></div>
+            <div className="pipeline-step"><Server/><span><b>Helm + Argo CD</b><small>deploys env-pr-42</small></span><i>03</i></div>
+            <div className="preview-ready"><Shield size={18}/><span>pr42.local.dev</span><b>READY</b></div>
+          </div>
+          <div className="project-copy">
+            <div className="project-mark"><Terminal size={28}/><span>EEE</span></div>
+            <h3>Every pull request gets<br/><em>its own environment.</em></h3>
+            <p>A fully local preview-environment platform that models PR discovery, isolated infrastructure, GitOps deployment, governance checks, and stale-environment cleanup.</p>
+            <div className="project-links">
+              <a href="https://github.com/simxr/Ephemeral-Environment-Engine" target="_blank" rel="noreferrer">Source <ArrowUpRight size={15}/></a>
+            </div>
+          </div>
+        </div>
+        <div className="project-foot"><span>PR-isolated namespaces</span><span>Least-privilege mock IAM</span><span>Dry-run cleanup + policy gates</span></div>
+      </section>
+
+      <section className="experience" id="experience">
+        <div className="section-kicker dark"><span>03</span> Experience</div>
+        <h2>Building the foundations<br/>behind <em>critical systems.</em></h2>
+        <div className="timeline">
+          <article>
+            <div className="timeline-date">Jan 2025 — Present</div>
+            <div className="timeline-role"><h3>Cloud Automation Engineer</h3><p>ION · CAT Cloud / Core Architecture Team</p></div>
+            <div className="timeline-copy">
+              <p>Build Terraform and Terragrunt modules, Cloud Posse-based standards, and EKS bootstrap automation through Helm, Argo CD, and Azure DevOps.</p>
+              <p>Selected for India Global Induction 2026, supporting new joiners and representing engineering input in CXO and CEO-level leadership discussions.</p>
+            </div>
+          </article>
+          <article>
+            <div className="timeline-date">Nov — Dec 2023</div>
+            <div className="timeline-role"><h3>Python Developer Intern</h3><p>VVDN Technologies</p></div>
+            <div className="timeline-copy"><p>Engineered automation for network-controller workflows and improved AWS Lambda and MongoDB-backed internal tooling.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section className="credentials">
+        <div className="credential-title"><span>04 · Credentials</span><h2>Proof in the<br/><em>details.</em></h2></div>
+        <div className="credential-list">
+          <article><Award/><div><small>CERTIFICATION</small><strong>Azure Administrator Associate</strong><span>Microsoft Certified</span></div></article>
+          <article><Cloud/><div><small>CERTIFICATION</small><strong>AWS Cloud Practitioner</strong><span>AWS Certified</span></div></article>
+          <article><GraduationCap/><div><small>EDUCATION</small><strong>Branch Rank 2 · CGPA 9.67</strong><span>B.Tech CSE, Information Security · VIT</span></div></article>
+          <article><Database/><div><small>PUBLICATION</small><strong>Breast Cancer Detection Using ML</strong><span>Published in IJFMR</span></div></article>
+        </div>
+      </section>
+
+      <footer className="contact" id="contact">
+        <p className="section-kicker"><span>05</span> Start a conversation</p>
+        <h2>Let&apos;s build<br/><em key={contactWords[wordIndex]}>{contactWords[wordIndex]}</em><br/>together.</h2>
+        <div className="contact-side">
+          <a href="mailto:simarahuja@outlook.com"><Mail size={19}/>simarahuja@outlook.com</a>
+          <p>Open to cloud automation, platform engineering, and SRE opportunities.</p>
+          <div className="footer-links">
+            <a href="https://github.com/simxr" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={14}/></a>
+            <a href="https://www.linkedin.com/in/simarahuja/" target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={14}/></a>
+          </div>
+        </div>
+        <div className="giant-name">AHUJA</div>
+      </footer>
+    </main>
+  );
+}
