@@ -18,17 +18,27 @@ export const metadata: Metadata = {
       'https://simar-ahuja-cloud.simarahuja2307.chatgpt.site',
   ),
   title: 'Simar Ahuja | Cloud Automation Engineer',
-  description: 'Cloud automation engineer building secure AWS, EKS, Terraform, and GitOps systems.',
+  description:
+    'Cloud automation engineer building secure AWS, EKS, Terraform, and GitOps systems.',
   openGraph: {
     title: 'Simar Ahuja | Cloud Automation Engineer',
-    description: 'Secure cloud foundations across AWS, EKS, Terraform, and GitOps.',
+    description:
+      'Secure cloud foundations across AWS, EKS, Terraform, and GitOps.',
     type: 'website',
-    images: [{ url: '/og.png', width: 1736, height: 907, alt: 'Simar Ahuja, Cloud Automation Engineer' }],
+    images: [
+      {
+        url: '/og.png',
+        width: 1736,
+        height: 907,
+        alt: 'Simar Ahuja, Cloud Automation Engineer',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Simar Ahuja | Cloud Automation Engineer',
-    description: 'Secure cloud foundations across AWS, EKS, Terraform, and GitOps.',
+    description:
+      'Secure cloud foundations across AWS, EKS, Terraform, and GitOps.',
     images: ['/og.png'],
   },
 };
