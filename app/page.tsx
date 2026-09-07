@@ -40,19 +40,19 @@ const currentWork = [
     icon: Cloud,
     label: 'Cloud foundations',
     detail:
-      'Reusable Terraform and Terragrunt modules, shared platform standards, and secure AWS foundations.',
+      'Reusable Terraform and Terragrunt modules built with Cloud Posse patterns for secure, repeatable AWS and EKS provisioning.',
   },
   {
     icon: Network,
-    label: 'Platform delivery',
+    label: 'End-to-end delivery',
     detail:
-      'EKS bootstrap automation and GitOps delivery workflows using Helm, Argo CD, and Azure DevOps.',
+      'Production EKS clusters bootstrapped through Terraform, Helm, Argo CD, and Azure DevOps pipelines.',
   },
   {
-    icon: Gauge,
-    label: 'Operational clarity',
+    icon: Shield,
+    label: 'Platform standards',
     detail:
-      'Observability-led right-sizing with Prometheus and Grafana to improve reliability and efficiency.',
+      'Identity, observability, storage, backup, security, and CI/CD standardized with Keycloak and kube-prometheus-stack.',
   },
 ];
 
@@ -388,15 +388,16 @@ export default function Home() {
         <div className="impact-intro">
           <h2>Reliability you can measure.</h2>
           <p>
-            I build automation and standards for secure AWS and EKS deployments
-            supporting regulated, business-critical systems.
+            I own infrastructure automation for microservices across financial
+            markets and core banking on EKS—standardizing how mission-critical
+            workloads are provisioned, observed, and operated.
           </p>
         </div>
         <div className="metrics-strip">
           <article>
             <Gauge aria-hidden="true" />
             <strong>99.96%</strong>
-            <span>Production EKS SLA supported</span>
+            <span>Production SLA sustained</span>
           </article>
           <article>
             <DollarSign aria-hidden="true" />
@@ -405,8 +406,8 @@ export default function Home() {
           </article>
           <article>
             <Server aria-hidden="true" />
-            <strong>~$1,000</strong>
-            <span>Saved per cluster monthly</span>
+            <strong>&gt;$1,000</strong>
+            <span>Monthly savings per cluster</span>
           </article>
         </div>
         <div className="impact-method">
@@ -414,6 +415,8 @@ export default function Home() {
           <span>Requests / limits analysis</span>
           <span>Prometheus + Grafana</span>
           <span>AWS Well-Architected</span>
+          <span>Keycloak</span>
+          <span>Argo CD</span>
         </div>
       </section>
 
@@ -636,10 +639,11 @@ export default function Home() {
           <div className="role-summary">
             <span>Jan 2025 — Present</span>
             <h3>Cloud Automation Engineer</h3>
+            <small>Core Architecture Team</small>
             <p>
-              I turn repeatable infrastructure decisions into dependable
-              platform capabilities—secure by default, observable in production,
-              and easier for teams to operate.
+              I design reusable cloud platforms behind mission-critical
+              financial systems—turning security, reliability, and operational
+              standards into automation teams can trust.
             </p>
           </div>
         </div>
@@ -658,16 +662,16 @@ export default function Home() {
           <div>
             <Cpu />
             <span>Scope</span>
-            <strong>AWS · EKS · GitOps</strong>
+            <strong>AWS · EKS · Financial systems</strong>
           </div>
           <div>
             <Sparkles />
             <span>Approach</span>
-            <strong>Standards · Automation · Observability</strong>
+            <strong>Well-Architected · SRE · GitOps</strong>
           </div>
           <p>
-            Reusable platform patterns that make secure delivery easier to
-            adopt, operate, and evolve.
+            Secure, observable platform patterns built for repeatable operations
+            at production scale.
           </p>
         </div>
         <div className="earlier-role">
