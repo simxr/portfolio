@@ -1530,49 +1530,33 @@ button {
   place-items: center;
   background: #050505;
   color: #ff702e;
-  animation: intro-exit 0.65s 2.85s cubic-bezier(0.76, 0, 0.24, 1) both;
+  animation: intro-exit 0.6s 3.4s cubic-bezier(0.76, 0, 0.24, 1) both;
 }
 .signature {
-  width: min(690px, 88vw);
+  width: min(760px, 94vw);
   overflow: visible;
-  filter: drop-shadow(0 0 6px #ff601955) drop-shadow(0 0 28px #ff601933);
-  transform: rotate(-6deg);
+  filter: drop-shadow(0 0 4px #ff601933);
+  transform: rotate(-2deg);
 }
 .signature-first,
 .signature-last,
 .signature-underline {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  animation: signature-write 1.15s 0.15s ease-in-out forwards;
+  animation: signature-write 1.2s 0.15s ease-in-out forwards;
 }
 .signature-last {
-  animation-delay: 1.15s;
-  animation-duration: 1.15s;
+  animation-delay: 1.25s;
+  animation-duration: 1.2s;
 }
 .signature-underline {
-  animation-delay: 2.2s;
-  animation-duration: 0.4s;
+  animation-delay: 2.4s;
+  animation-duration: 0.3s;
   stroke-width: 1.4;
 }
 .signature-dots {
   opacity: 0;
-  animation: signature-dots 0.15s 2.15s forwards;
-}
-.intro-skip {
-  position: absolute;
-  bottom: max(32px, env(safe-area-inset-bottom));
-  right: 6vw;
-  border: 0;
-  background: none;
-  padding: 12px;
-  color: #b6aca5;
-  cursor: pointer;
-  font: 11px monospace;
-  letter-spacing: 0.08em;
-}
-.intro-skip span {
-  margin-left: 14px;
-  color: #ff702e;
+  animation: signature-dots 0.15s 2.3s forwards;
 }
 @keyframes signature-write {
   to {
@@ -1808,33 +1792,18 @@ button {
   overflow: hidden;
   font-size: 25vw;
   line-height: 0.85;
-  text-align: left;
+  text-align: center;
+  transform-origin: center bottom;
 }
-.giant-name-track {
-  display: flex;
-  width: max-content;
-  animation: footer-drift 36s linear infinite;
-  will-change: transform;
-}
-.giant-name-track > span {
-  display: block;
-  white-space: nowrap;
-  padding-right: 0.16em;
-}
-.giant-name i {
-  display: inline-block;
-  font-family: Georgia, serif;
-  font-size: 0.6em;
-  font-style: normal;
-  vertical-align: 0.13em;
-  color: #f2eadb80;
-}
-@keyframes footer-drift {
+@keyframes footer-grow {
+  from {
+    transform: scale(0.94);
+  }
   to {
-    transform: translateX(-50%);
+    transform: scale(1);
   }
 }
-.motion-paused .giant-name-track,
+.motion-paused .giant-name,
 .motion-paused .signal-ticker > div,
 .motion-paused .hero-status span,
 .motion-paused .ascii-portrait::after,
@@ -1852,6 +1821,11 @@ button {
 }
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
+    .giant-name {
+      animation: footer-grow linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
     .statement p {
       animation: statement-arrive linear both;
       animation-timeline: view();
@@ -2045,7 +2019,7 @@ button {
   }
   .giant-name {
     bottom: 0;
-    font-size: 32vw;
+    font-size: 29vw;
   }
   .menu-overlay {
     padding-inline: 24px;
@@ -2094,7 +2068,7 @@ button {
   .featured-heading h2 {
     animation: none;
   }
-  .giant-name-track {
+  .giant-name {
     transform: none;
   }
   .footer-meta button {

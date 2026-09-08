@@ -10,15 +10,16 @@ The existing GitHub Actions workflow publishes pushes to `main` to GitHub Pages.
 
 ## Resume
 
-The download currently serves `public/resume.txt`, a text version of the supplied
-resume. To use your final PDF, add `public/resume.pdf`, change `resumePath` in
-`app/page.tsx` to end in `/resume.pdf`, and update the `TXT` badge to `PDF`.
-Keep the base-path prefix so downloads work on GitHub Pages.
+The download links are configured for `public/resume.pdf`. Add your final PDF
+there before publishing; the download will be unavailable until that file exists.
+The base-path prefix is preserved for GitHub Pages.
 
 ## Motion
 
-The signature intro runs once per tab session for 3.5 seconds. It can be skipped,
+The signature intro runs once per tab session for 4 seconds. Escape or Tab dismisses it,
 and is omitted for anchor links and reduced-motion preferences. To replay it,
 open a new tab or clear the `simar-intro` session-storage key.
 The footer motion toggle pauses decorative animations; operating-system
 reduced-motion preferences also disable motion and smooth scrolling.
+The single AHUJA footer gently grows on scroll in browsers supporting CSS scroll
+timelines, with a static fallback in other browsers.

@@ -26,14 +26,14 @@ import {
 import { useEffect, useRef, useState } from 'react';
 import { SignatureIntro } from '../components/signature-intro';
 
-// Replace with '/resume.pdf' after adding your final PDF to public/.
-const resumePath = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/resume.txt`;
+// Add your final PDF at public/resume.pdf.
+const resumePath = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/resume.pdf`;
 
 function ResumeLink() {
   return (
     <a className="resume-link" href={resumePath} download>
       Download resume <Download size={16} />
-      <span className="resume-format">TXT</span>
+      <span className="resume-format">PDF</span>
     </a>
   );
 }
@@ -46,7 +46,7 @@ const workAreas = [
     headline: 'Automation for critical systems.',
     detail:
       'I own infrastructure automation for microservices across financial markets and core banking on EKS—turning complex operational requirements into dependable platform capabilities.',
-    tags: ['AWS', 'EKS', 'Python', 'Bash'],
+    tags: ['AWS', 'EKS', 'Core Cloud Architecture'],
   },
   {
     icon: Network,
@@ -62,7 +62,7 @@ const workAreas = [
     headline: 'Reliability you can measure.',
     detail:
       'I apply SRE and AWS Well-Architected principles alongside Prometheus and Grafana utilization analysis to keep mission-critical workloads reliable and efficient.',
-    tags: ['Prometheus', 'Grafana', 'OpenTelemetry', 'Karpenter'],
+    tags: ['kube-prometheus-stack', 'Right-sizing', 'Karpenter'],
   },
   {
     icon: GitBranch,
@@ -396,9 +396,9 @@ export default function Home() {
             <span className="hero-last">Ahuja</span>
           </h1>
           <p className="hero-intro">
-            I make complex infrastructure feel effortless.
+            I engineer secure cloud foundations that let teams ship with confidence.
             <span className="hero-intro-detail">
-              Secure cloud platforms. Reliable systems. More room to build.
+              Secure cloud platforms. Reliable systems. Infrastructure as Code.
             </span>
           </p>
           <div className="hero-actions">
@@ -453,9 +453,9 @@ export default function Home() {
 
       <section className="statement" id="statement" data-reveal>
         <p>
-          <em>less</em> friction.
+          <em>from</em> infrastructure
         </p>
-        <p>more forward motion.</p>
+        <p>to dependable systems.</p>
         <span className="statement-detail">
           I build the foundations that help engineering teams move faster.
           <br />
@@ -572,8 +572,8 @@ export default function Home() {
             <p>
               Less searching. More contributing. A config-driven discovery tool
               that matches cloud-native engineers with relevant open-source
-              issues. A deterministic Go engine scores every match—and shows its
-              reasoning.
+              issues. Ranks curated opportunities by domain, skill signals, and
+              contribution shape, then exposes every scoring reason.
             </p>
             <div className="project-links">
               <a
@@ -700,10 +700,10 @@ export default function Home() {
               <em>its own environment.</em>
             </h3>
             <p>
-              A safe place to test every change. This local Kubernetes workflow
-              models the full preview lifecycle: pull request discovery,
-              isolated infrastructure, GitOps deployment, and controlled
-              cleanup. Production-minded guardrails, without a cloud bill.
+              Production-minded guardrails, without a cloud bill. A fully local
+              preview-environment platform that models PR discovery, isolated
+              infrastructure, GitOps deployment, governance checks, and
+              stale-environment cleanup.
             </p>
             <div className="project-links">
               <a
@@ -814,13 +814,7 @@ export default function Home() {
           <a href="#home">Back to top ↑</a>
         </div>
         <div className="giant-name" aria-hidden="true">
-          <div className="giant-name-track">
-            {[0, 1, 2, 3].map((item) => (
-              <span key={item}>
-                AHUJA <i>✳</i>{' '}
-              </span>
-            ))}
-          </div>
+          AHUJA
         </div>
       </footer>
     </main>
