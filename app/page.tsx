@@ -7,11 +7,8 @@ import {
   ArrowRight,
   ArrowUpRight,
   Award,
-  CheckCircle2,
   Cloud,
-  Cpu,
   Database,
-  DollarSign,
   ExternalLink,
   Gauge,
   GitBranch,
@@ -22,37 +19,44 @@ import {
   Network,
   Server,
   Shield,
-  Sparkles,
   Terminal,
   X,
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
-const roles = [
-  'Cloud Automation',
-  'Platform Engineering',
-  'SRE',
-  'Infrastructure as Code',
-];
 const contactWords = ['systems', 'reliability', 'impact'];
-const currentWork = [
+const workAreas = [
   {
     icon: Cloud,
-    label: 'Cloud foundations',
+    label: 'Cloud Automation',
+    headline: 'Automation for critical systems.',
     detail:
-      'Reusable Terraform and Terragrunt modules built with Cloud Posse patterns for secure, repeatable AWS and EKS provisioning.',
+      'I own infrastructure automation for microservices across financial markets and core banking on EKS—turning complex operational requirements into dependable platform capabilities.',
+    tags: ['AWS', 'EKS', 'Core Architecture Team'],
   },
   {
     icon: Network,
-    label: 'End-to-end delivery',
+    label: 'Platform Engineering',
+    headline: 'Production platforms, end to end.',
     detail:
-      'Production EKS clusters bootstrapped through Terraform, Helm, Argo CD, and Azure DevOps pipelines.',
+      'I bootstrap production EKS clusters through Terraform, Helm, Argo CD, and Azure DevOps, then standardize Keycloak identity, kube-prometheus-stack observability, storage and backup, security, and CI/CD.',
+    tags: ['Helm', 'Keycloak', 'kube-prometheus-stack'],
   },
   {
-    icon: Shield,
-    label: 'Platform standards',
+    icon: Gauge,
+    label: 'SRE',
+    headline: 'Reliability you can measure.',
     detail:
-      'Identity, observability, storage, backup, security, and CI/CD standardized with Keycloak and kube-prometheus-stack.',
+      'I apply SRE and AWS Well-Architected principles alongside Prometheus and Grafana utilization analysis to keep mission-critical workloads reliable and efficient.',
+    tags: ['kube-prometheus-stack', 'Right-sizing', 'Well-Architected'],
+  },
+  {
+    icon: GitBranch,
+    label: 'Infrastructure as Code',
+    headline: 'Secure foundations, made reusable.',
+    detail:
+      'I architect Terraform and Terragrunt modules with Cloud Posse patterns so AWS and EKS provisioning is secure, repeatable, and easier for engineering teams to adopt.',
+    tags: ['Terraform', 'Terragrunt', 'Cloud Posse'],
   },
 ];
 
@@ -255,6 +259,8 @@ export default function Home() {
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
+  const activeArea = workAreas[activeRole];
+  const ActiveAreaIcon = activeArea.icon;
 
   return (
     <main ref={siteRef} className="site is-ready">
@@ -300,14 +306,14 @@ export default function Home() {
           <a href="#home" onClick={closeMenu}>
             Home
           </a>
-          <a href="#impact" onClick={closeMenu}>
-            Impact
+          <a href="#focus" onClick={closeMenu}>
+            What I work across
           </a>
           <a href="#work" onClick={closeMenu}>
             Projects
           </a>
-          <a href="#current-work" onClick={closeMenu}>
-            Current work
+          <a href="#credentials" onClick={closeMenu}>
+            Credentials
           </a>
         </nav>
         <div className="menu-reachout">
@@ -381,72 +387,73 @@ export default function Home() {
         <p>to dependable systems.</p>
       </section>
 
-      <section className="impact" id="impact" data-reveal>
-        <div className="section-kicker">
-          <span>01</span> Production impact
-        </div>
-        <div className="impact-intro">
-          <h2>Reliability you can measure.</h2>
-          <p>
-            I own infrastructure automation for microservices across financial
-            markets and core banking on EKS—standardizing how mission-critical
-            workloads are provisioned, observed, and operated.
-          </p>
-        </div>
-        <div className="metrics-strip">
-          <article>
-            <Gauge aria-hidden="true" />
-            <strong>99.96%</strong>
-            <span>Production SLA sustained</span>
-          </article>
-          <article>
-            <DollarSign aria-hidden="true" />
-            <strong>12-13%</strong>
-            <span>Cluster cost reduction</span>
-          </article>
-          <article>
-            <Server aria-hidden="true" />
-            <strong>&gt;$1,000</strong>
-            <span>Monthly savings per cluster</span>
-          </article>
-        </div>
-        <div className="impact-method">
-          <span>Kubernetes right-sizing</span>
-          <span>Requests / limits analysis</span>
-          <span>Prometheus + Grafana</span>
-          <span>AWS Well-Architected</span>
-          <span>Keycloak</span>
-          <span>Argo CD</span>
-        </div>
-      </section>
-
       <section
         className="roles-section"
-        aria-label="Engineering focus areas"
+        id="focus"
+        aria-labelledby="focus-title"
         data-reveal
       >
         <div className="roles-orbit" aria-hidden="true">
           <span>{String(activeRole + 1).padStart(2, '0')}</span>
         </div>
-        <p className="roles-label">What I work across</p>
+        <div className="roles-context">
+          <p className="roles-label" id="focus-title">
+            <span>01</span> What I work across
+          </p>
+          <div>
+            <span>Jan 2025 — Present</span>
+            <strong>Cloud Automation Engineer</strong>
+            <small>Core Architecture Team</small>
+          </div>
+        </div>
         <div className="role-list">
-          {roles.map((role, index) => (
+          {workAreas.map((area, index) => (
             <button
-              key={role}
+              key={area.label}
               type="button"
               className={index === activeRole ? 'active' : ''}
               onPointerEnter={() => setActiveRole(index)}
               onFocus={() => setActiveRole(index)}
+              onClick={() => setActiveRole(index)}
+              aria-pressed={index === activeRole}
             >
               <small>{String(index + 1).padStart(2, '0')}</small>
-              {role}
+              {area.label}
             </button>
           ))}
         </div>
-        <p className="roles-note">
-          Secure by default. Observable in production. Built for the next team,
-          not just the first deployment.
-        </p>
+        <div className="roles-detail" key={activeArea.label} aria-live="polite">
+          <div className="roles-detail-copy">
+            <ActiveAreaIcon aria-hidden="true" />
+            <div>
+              <span>{activeArea.label}</span>
+              <h2>{activeArea.headline}</h2>
+              <p>{activeArea.detail}</p>
+            </div>
+          </div>
+          <div className="roles-tags" aria-label={`${activeArea.label} tools`}>
+            {activeArea.tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+        </div>
+        <div
+          className="roles-metrics"
+          aria-label="Verified production outcomes"
+        >
+          <article>
+            <strong>99.96%</strong>
+            <span>Production SLA sustained</span>
+          </article>
+          <article>
+            <strong>12-13%</strong>
+            <span>EKS cluster cost reduction</span>
+          </article>
+          <article>
+            <strong>&gt;$1,000</strong>
+            <span>Monthly savings per cluster</span>
+          </article>
+        </div>
       </section>
 
       <section className="featured-heading" id="work" data-reveal>
@@ -626,73 +633,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="current-work" id="current-work" data-reveal>
-        <div className="section-kicker dark">
-          <span>03</span> Current work
-        </div>
-        <div className="current-work-head">
-          <h2>
-            Engineering leverage
-            <br />
-            for <em>critical systems.</em>
-          </h2>
-          <div className="role-summary">
-            <span>Jan 2025 — Present</span>
-            <h3>Cloud Automation Engineer</h3>
-            <small>Core Architecture Team</small>
-            <p>
-              I design reusable cloud platforms behind mission-critical
-              financial systems—turning security, reliability, and operational
-              standards into automation teams can trust.
-            </p>
-          </div>
-        </div>
-        <div className="work-pillars">
-          {currentWork.map(({ icon: Icon, label, detail }, index) => (
-            <article key={label}>
-              <div className="pillar-index">0{index + 1}</div>
-              <Icon aria-hidden="true" />
-              <h3>{label}</h3>
-              <p>{detail}</p>
-              <CheckCircle2 className="pillar-check" aria-hidden="true" />
-            </article>
-          ))}
-        </div>
-        <div className="scope-strip">
-          <div>
-            <Cpu />
-            <span>Scope</span>
-            <strong>AWS · EKS · Financial systems</strong>
-          </div>
-          <div>
-            <Sparkles />
-            <span>Approach</span>
-            <strong>Well-Architected · SRE · GitOps</strong>
-          </div>
-          <p>
-            Secure, observable platform patterns built for repeatable operations
-            at production scale.
-          </p>
-        </div>
-        <div className="earlier-role">
-          <div>
-            <span>Earlier experience</span>
-            <strong>Nov — Dec 2023</strong>
-          </div>
-          <div>
-            <h3>Python Developer Intern</h3>
-            <p>VVDN Technologies</p>
-          </div>
-          <p>
-            Engineered automation for network-controller workflows and improved
-            AWS Lambda and MongoDB-backed internal tooling.
-          </p>
-        </div>
-      </section>
-
-      <section className="credentials" data-reveal>
+      <section className="credentials" id="credentials" data-reveal>
         <div className="credential-title">
-          <span>04 · Credentials</span>
+          <span>03 · Credentials</span>
           <h2>
             Proof in the
             <br />
@@ -737,7 +680,7 @@ export default function Home() {
 
       <footer className="contact" id="contact" data-reveal>
         <p className="section-kicker">
-          <span>05</span> Start a conversation
+          <span>04</span> Start a conversation
         </p>
         <h2>
           Let&apos;s build
