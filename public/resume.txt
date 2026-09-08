@@ -1,0 +1,59 @@
+SIMAR AHUJA
+Cloud Automation Engineer | Gurgaon, India
+simarahuja@outlook.com
+https://www.linkedin.com/in/simarahuja/
+https://github.com/simxr
+
+PROFESSIONAL SUMMARY
+SRE-focused Cloud Automation Engineer building secure, repeatable AWS and
+Kubernetes platforms for financial-markets and core-banking microservices.
+
+EXPERIENCE
+ION Group | Cloud Automation Engineer, Core Architecture Team
+January 2025 - Present
+- Standardized AWS/EKS provisioning across 15 teams with reusable
+  Terraform/Terragrunt modules based on Cloud Posse patterns.
+- Own infrastructure automation supporting 99.96% production SLA.
+- Reduced EKS cluster spend 12-13%, saving $1,000+ per cluster monthly.
+- Reduced environment setup from days to within an hour through
+  Terraform, Helm, Argo CD, and Azure DevOps automation.
+- Standardize identity, observability, storage, backup, security, and CI/CD
+  to enable self-service infrastructure across engineering teams.
+- Selected for ION's India Global Induction 2026 to onboard new hires
+  and present engineering input to CXO/CEO leadership.
+
+VVDN Technologies | Python Developer Intern
+November 2023 - December 2023
+- Built Python automation for network-controller workflows and OpenNMS.
+- Improved AWS Lambda scripts and MongoDB-backed internal tooling.
+
+SELECTED PROJECTS
+Upstream | https://github.com/simxr/Upstream
+Config-driven open-source issue discovery for cloud-native engineers.
+Deterministic Go scoring, YAML taxonomies, GitHub API integration,
+scheduled feed refresh, and GitHub Pages delivery.
+
+Ephemeral Environment Engine
+https://github.com/simxr/Ephemeral-Environment-Engine
+Local PR-scoped Kubernetes preview workflow using K3d/K3s, Helm,
+Argo CD, Terraform, Terragrunt, and LocalStack. Models ApplicationSet
+discovery, isolated namespaces, least-privilege IAM, and safe cleanup.
+
+SKILLS
+Cloud: AWS (EKS, VPC, S3, EC2, IAM, RDS, ElastiCache, DynamoDB,
+EBS CSI, CloudWatch, X-Ray)
+Platform: Kubernetes, Helm, Argo CD, Traefik, Keycloak, Karpenter, HPA
+Observability: kube-prometheus-stack, OpenTelemetry, Prometheus, Grafana
+Infrastructure and delivery: Terraform, Terragrunt, Cloud Posse,
+Azure DevOps Pipelines, GitHub Actions, Docker
+Programming: Java, Python, Bash, YAML
+
+EDUCATION
+Vellore Institute of Technology | 2021 - 2025
+B.Tech Computer Science, specialization in Information Security
+CGPA: 9.67/10 | Branch Rank: 2
+
+CERTIFICATIONS AND PUBLICATION
+Microsoft Certified: Azure Administrator Associate
+AWS Certified Cloud Practitioner
+Published: Breast Cancer Detection Using Machine Learning, IJFMR

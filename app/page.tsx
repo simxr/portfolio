@@ -9,6 +9,7 @@ import {
   Award,
   Cloud,
   Database,
+  Download,
   ExternalLink,
   Gauge,
   GitBranch,
@@ -23,6 +24,19 @@ import {
   X,
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import { SignatureIntro } from '../components/signature-intro';
+
+// Replace with '/resume.pdf' after adding your final PDF to public/.
+const resumePath = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/resume.txt`;
+
+function ResumeLink() {
+  return (
+    <a className="resume-link" href={resumePath} download>
+      Download resume <Download size={16} />
+      <span className="resume-format">TXT</span>
+    </a>
+  );
+}
 
 const contactWords = ['systems', 'reliability', 'impact'];
 const workAreas = [
@@ -32,7 +46,7 @@ const workAreas = [
     headline: 'Automation for critical systems.',
     detail:
       'I own infrastructure automation for microservices across financial markets and core banking on EKS—turning complex operational requirements into dependable platform capabilities.',
-    tags: ['AWS', 'EKS', 'Core Architecture Team'],
+    tags: ['AWS', 'EKS', 'Python', 'Bash'],
   },
   {
     icon: Network,
@@ -40,7 +54,7 @@ const workAreas = [
     headline: 'Production platforms, end to end.',
     detail:
       'I bootstrap production EKS clusters through Terraform, Helm, Argo CD, and Azure DevOps, then standardize Keycloak identity, kube-prometheus-stack observability, storage and backup, security, and CI/CD.',
-    tags: ['Helm', 'Keycloak', 'kube-prometheus-stack'],
+    tags: ['Helm', 'Argo CD', 'Keycloak', 'Docker'],
   },
   {
     icon: Gauge,
@@ -48,7 +62,7 @@ const workAreas = [
     headline: 'Reliability you can measure.',
     detail:
       'I apply SRE and AWS Well-Architected principles alongside Prometheus and Grafana utilization analysis to keep mission-critical workloads reliable and efficient.',
-    tags: ['kube-prometheus-stack', 'Right-sizing', 'Well-Architected'],
+    tags: ['Prometheus', 'Grafana', 'OpenTelemetry', 'Karpenter'],
   },
   {
     icon: GitBranch,
@@ -169,7 +183,7 @@ function AsciiPortrait() {
       <canvas ref={canvasRef} aria-hidden="true" />
       <div className="ascii-scanline" aria-hidden="true" />
       <div className="ascii-caption">
-        <span>HALFTONE / SOURCE PORTRAIT</span>
+        <span>ENGINEER / BUILDER / PROBLEM SOLVER</span>
         <b>SIMAR.AHUJA</b>
       </div>
     </div>
@@ -180,23 +194,51 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
   const [activeRole, setActiveRole] = useState(0);
+  const [motionPaused, setMotionPaused] = useState(false);
   const siteRef = useRef<HTMLElement>(null);
+  const menuRef = useRef<HTMLDialogElement>(null);
+  const menuTriggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
+    if (
+      motionPaused ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    )
+      return;
     const timer = window.setInterval(() => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       setWordIndex((current) => (current + 1) % contactWords.length);
     }, 2300);
     return () => window.clearInterval(timer);
-  }, []);
+  }, [motionPaused]);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
+    const menu = menuRef.current;
+    const trigger = menuTriggerRef.current;
+    if (menuOpen && !menu?.open) menu?.showModal();
+    if (!menuOpen && menu?.open) menu.close();
+    if (menuOpen) menu?.querySelector<HTMLButtonElement>('button')?.focus();
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setMenuOpen(false);
+      if (event.key === 'Tab' && menuOpen && menu) {
+        const items = menu.querySelectorAll<HTMLElement>('a[href], button');
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last?.focus();
+        }
+        if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first?.focus();
+        }
+      }
     };
     window.addEventListener('keydown', closeOnEscape);
     return () => {
       document.body.style.overflow = '';
+      if (menuOpen) trigger?.focus();
       window.removeEventListener('keydown', closeOnEscape);
     };
   }, [menuOpen]);
@@ -217,7 +259,12 @@ export default function Home() {
       });
     };
     const updatePointer = (event: PointerEvent) => {
-      if (event.pointerType === 'touch') return;
+      if (
+        event.pointerType === 'touch' ||
+        motionPaused ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      )
+        return;
       window.cancelAnimationFrame(pointerFrame);
       pointerFrame = window.requestAnimationFrame(() => {
         root.style.setProperty('--pointer-x', `${event.clientX}px`);
@@ -234,7 +281,7 @@ export default function Home() {
       window.cancelAnimationFrame(scrollFrame);
       window.cancelAnimationFrame(pointerFrame);
     };
-  }, []);
+  }, [motionPaused]);
 
   useEffect(() => {
     const elements = document.querySelectorAll<HTMLElement>('[data-reveal]');
@@ -263,12 +310,20 @@ export default function Home() {
   const ActiveAreaIcon = activeArea.icon;
 
   return (
-    <main ref={siteRef} className="site is-ready">
+    <main
+      ref={siteRef}
+      className={`site is-ready${motionPaused ? ' motion-paused' : ''}`}
+    >
+      <SignatureIntro />
+      <a href="#statement" className="skip-link">
+        Skip to content
+      </a>
       <div className="scroll-progress" aria-hidden="true" />
       <div className="cursor-glow" aria-hidden="true" />
       <header className="site-nav">
         <button
           className="nav-action"
+          ref={menuTriggerRef}
           type="button"
           onClick={() => setMenuOpen(true)}
           aria-label="Open navigation"
@@ -289,8 +344,13 @@ export default function Home() {
         </a>
       </header>
 
-      <div
+      <dialog
         id="site-menu"
+        ref={menuRef}
+        onCancel={closeMenu}
+        aria-modal={menuOpen || undefined}
+        aria-label="Navigation"
+        inert={!menuOpen}
         className={menuOpen ? 'menu-overlay is-open' : 'menu-overlay'}
         aria-hidden={!menuOpen}
       >
@@ -315,17 +375,20 @@ export default function Home() {
           <a href="#credentials" onClick={closeMenu}>
             Credentials
           </a>
+          <a href="#contact" onClick={closeMenu}>
+            Let&apos;s talk
+          </a>
         </nav>
         <div className="menu-reachout">
           <span>Reach out</span>
           <a href="mailto:simarahuja@outlook.com">simarahuja@outlook.com</a>
         </div>
-      </div>
+      </dialog>
 
       <section className="hero" id="home">
         <div className="hero-copy">
           <div className="hero-status">
-            <span /> Available for ambitious infrastructure problems
+            <span /> Building at ION Group
           </div>
           <p className="eyebrow">Cloud Automation Engineer · Gurgaon, India</p>
           <h1>
@@ -333,9 +396,17 @@ export default function Home() {
             <span className="hero-last">Ahuja</span>
           </h1>
           <p className="hero-intro">
-            I engineer secure cloud foundations that let teams ship with
-            confidence.
+            I make complex infrastructure feel effortless.
+            <span className="hero-intro-detail">
+              Secure cloud platforms. Reliable systems. More room to build.
+            </span>
           </p>
+          <div className="hero-actions">
+            <a className="primary-link" href="#work">
+              Explore my work <ArrowDown size={16} />
+            </a>
+            <ResumeLink />
+          </div>
         </div>
 
         <AsciiPortrait />
@@ -382,9 +453,14 @@ export default function Home() {
 
       <section className="statement" id="statement" data-reveal>
         <p>
-          <em>from</em> infrastructure
+          <em>less</em> friction.
         </p>
-        <p>to dependable systems.</p>
+        <p>more forward motion.</p>
+        <span className="statement-detail">
+          I build the foundations that help engineering teams move faster.
+          <br />
+          And keep the critical systems behind them running.
+        </span>
       </section>
 
       <section
@@ -403,7 +479,7 @@ export default function Home() {
           <div>
             <span>Jan 2025 — Present</span>
             <strong>Cloud Automation Engineer</strong>
-            <small>Core Architecture Team</small>
+            <small>ION Group · Core Architecture Team</small>
           </div>
         </div>
         <div className="role-list">
@@ -453,6 +529,18 @@ export default function Home() {
             <strong>&gt;$1,000</strong>
             <span>Monthly savings per cluster</span>
           </article>
+          <article>
+            <strong>&lt;1 hour</strong>
+            <span>Environment setup, down from days</span>
+          </article>
+        </div>
+        <div className="experience-note">
+          <span>BUILT FOR TEAMS</span>
+          <p>
+            Reusable AWS and EKS foundations adopted across{' '}
+            <strong>15 teams</strong>, from development to production. Secure
+            defaults, repeatable delivery, and infrastructure engineers can own.
+          </p>
         </div>
       </section>
 
@@ -482,9 +570,10 @@ export default function Home() {
               <em>Understand why.</em>
             </h3>
             <p>
-              A targeted issue discovery tool for cloud-native engineers. It
-              ranks curated opportunities by domain, skill signals, and
-              contribution shape, then exposes every scoring reason.
+              Less searching. More contributing. A config-driven discovery tool
+              that matches cloud-native engineers with relevant open-source
+              issues. A deterministic Go engine scores every match—and shows its
+              reasoning.
             </p>
             <div className="project-links">
               <a
@@ -508,7 +597,7 @@ export default function Home() {
               <span />
               <span />
               <span />
-              <b>UPSTREAM / MATCH ENGINE</b>
+              <b>UPSTREAM / EXAMPLE MATCH</b>
             </div>
             <div className="issue-result">
               <div className="issue-score">
@@ -611,9 +700,10 @@ export default function Home() {
               <em>its own environment.</em>
             </h3>
             <p>
-              A fully local preview-environment platform that models PR
-              discovery, isolated infrastructure, GitOps deployment, governance
-              checks, and stale-environment cleanup.
+              A safe place to test every change. This local Kubernetes workflow
+              models the full preview lifecycle: pull request discovery,
+              isolated infrastructure, GitOps deployment, and controlled
+              cleanup. Production-minded guardrails, without a cloud bill.
             </p>
             <div className="project-links">
               <a
@@ -710,8 +800,28 @@ export default function Home() {
               LinkedIn <ArrowUpRight size={14} />
             </a>
           </div>
+          <ResumeLink />
         </div>
-        <div className="giant-name">AHUJA</div>
+        <div className="footer-meta">
+          <span>Gurgaon, India · Built with intent.</span>
+          <button
+            type="button"
+            aria-pressed={motionPaused}
+            onClick={() => setMotionPaused(!motionPaused)}
+          >
+            {motionPaused ? 'Resume motion' : 'Pause motion'}
+          </button>
+          <a href="#home">Back to top ↑</a>
+        </div>
+        <div className="giant-name" aria-hidden="true">
+          <div className="giant-name-track">
+            {[0, 1, 2, 3].map((item) => (
+              <span key={item}>
+                AHUJA <i>✳</i>{' '}
+              </span>
+            ))}
+          </div>
+        </div>
       </footer>
     </main>
   );
