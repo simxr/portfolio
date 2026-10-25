@@ -530,7 +530,7 @@ button {
 
 .roles-section {
   position: relative;
-  min-height: 125vh;
+  min-height: 104vh;
   display: grid;
   align-content: center;
   justify-items: center;
@@ -630,7 +630,7 @@ button {
   padding: 0;
   background: transparent;
   font-family: Impact, 'Arial Narrow', sans-serif;
-  font-size: clamp(48px, 7.3vw, 110px);
+  font-size: clamp(42px, 5.8vw, 88px);
   line-height: 0.95;
   color: rgba(242, 234, 219, 0.2);
   cursor: pointer;
@@ -662,7 +662,7 @@ button {
   width: min(1120px, 100%);
   gap: 6vw;
   align-items: end;
-  margin-top: 54px;
+  margin-top: 42px;
   padding-top: 28px;
   border-top: 1px solid rgba(242, 234, 219, 0.22);
   animation: detail-in 0.5s both cubic-bezier(0.22, 1, 0.36, 1);
