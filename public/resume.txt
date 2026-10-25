@@ -54,6 +54,5 @@ B.Tech Computer Science, specialization in Information Security
 CGPA: 9.67/10 | Branch Rank: 2
 
 CERTIFICATIONS AND PUBLICATION
-Microsoft Certified: Azure Administrator Associate
 AWS Certified Cloud Practitioner
 Published: Breast Cancer Detection Using Machine Learning, IJFMR

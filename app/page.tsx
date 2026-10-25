@@ -6,7 +6,6 @@ import {
   ArrowDown,
   ArrowRight,
   ArrowUpRight,
-  Award,
   Cloud,
   Database,
   Download,
@@ -26,14 +25,12 @@ import {
 import { useEffect, useRef, useState } from 'react';
 import { SignatureIntro } from '../components/signature-intro';
 
-// Add your final PDF at public/resume.pdf.
-const resumePath = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/resume.pdf`;
+const resumePath = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/resume.txt`;
 
 function ResumeLink() {
   return (
     <a className="resume-link" href={resumePath} download>
-      Download resume <Download size={16} />
-      <span className="resume-format">PDF</span>
+      Resume <Download size={16} />
     </a>
   );
 }
@@ -194,23 +191,18 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
   const [activeRole, setActiveRole] = useState(0);
-  const [motionPaused, setMotionPaused] = useState(false);
   const siteRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDialogElement>(null);
   const menuTriggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (
-      motionPaused ||
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    )
-      return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const timer = window.setInterval(() => {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       setWordIndex((current) => (current + 1) % contactWords.length);
     }, 2300);
     return () => window.clearInterval(timer);
-  }, [motionPaused]);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
@@ -261,7 +253,6 @@ export default function Home() {
     const updatePointer = (event: PointerEvent) => {
       if (
         event.pointerType === 'touch' ||
-        motionPaused ||
         window.matchMedia('(prefers-reduced-motion: reduce)').matches
       )
         return;
@@ -281,7 +272,7 @@ export default function Home() {
       window.cancelAnimationFrame(scrollFrame);
       window.cancelAnimationFrame(pointerFrame);
     };
-  }, [motionPaused]);
+  }, []);
 
   useEffect(() => {
     const elements = document.querySelectorAll<HTMLElement>('[data-reveal]');
@@ -312,7 +303,7 @@ export default function Home() {
   return (
     <main
       ref={siteRef}
-      className={`site is-ready${motionPaused ? ' motion-paused' : ''}`}
+      className="site is-ready"
     >
       <SignatureIntro />
       <a href="#statement" className="skip-link">
@@ -405,7 +396,6 @@ export default function Home() {
             <a className="primary-link" href="#work">
               Explore my work <ArrowDown size={16} />
             </a>
-            <ResumeLink />
           </div>
         </div>
 
@@ -734,14 +724,6 @@ export default function Home() {
         </div>
         <div className="credential-list">
           <article>
-            <Award />
-            <div>
-              <small>CERTIFICATION</small>
-              <strong>Azure Administrator Associate</strong>
-              <span>Microsoft Certified</span>
-            </div>
-          </article>
-          <article>
             <Cloud />
             <div>
               <small>CERTIFICATION</small>
@@ -804,13 +786,6 @@ export default function Home() {
         </div>
         <div className="footer-meta">
           <span>Gurgaon, India · Built with intent.</span>
-          <button
-            type="button"
-            aria-pressed={motionPaused}
-            onClick={() => setMotionPaused(!motionPaused)}
-          >
-            {motionPaused ? 'Resume motion' : 'Pause motion'}
-          </button>
           <a href="#home">Back to top ↑</a>
         </div>
         <div className="giant-name" aria-hidden="true">

@@ -1325,13 +1325,6 @@ button {
     max-width: 310px;
     font-size: 18px;
   }
-  .systems-portrait {
-    position: absolute;
-    inset: 24% -22% auto auto;
-    width: 76vw;
-    opacity: 0.78;
-    transform: rotate(1.2deg);
-  }
   .hero-socials {
     left: 20px;
     bottom: 30px;
@@ -1638,10 +1631,6 @@ button {
 .primary-link:hover svg {
   transform: translateY(3px);
 }
-.resume-format {
-  font-size: 9px;
-  opacity: 0.65;
-}
 .statement {
   position: relative;
 }
@@ -1803,22 +1792,6 @@ button {
     transform: scale(1);
   }
 }
-.motion-paused .giant-name,
-.motion-paused .signal-ticker > div,
-.motion-paused .hero-status span,
-.motion-paused .ascii-portrait::after,
-.motion-paused .ascii-scanline,
-.motion-paused .scroll-cue svg,
-.motion-paused .roles-orbit,
-.motion-paused .issue-score svg,
-.motion-paused .preview-ready,
-.motion-paused .pipeline-line::after,
-.motion-paused .pipeline-step {
-  animation-play-state: paused !important;
-}
-.motion-paused .cursor-glow {
-  display: none;
-}
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .giant-name {
@@ -1917,8 +1890,8 @@ button {
     position: relative;
     inset: auto;
     justify-self: center;
-    width: min(100%, 440px);
-    aspect-ratio: 5 / 4;
+    width: min(92vw, 420px);
+    aspect-ratio: 1;
     opacity: 1;
     transform: rotate(0);
   }
