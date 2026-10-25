@@ -1107,7 +1107,7 @@ button {
   gap: 6vw;
   overflow: hidden;
   padding: 138px 7vw 44px;
-  background: #0d1514;
+  background: linear-gradient(180deg, #0d1514 0%, #321716 54%, #8f1011 100%);
 }
 .contact::before {
   content: '';
@@ -1511,14 +1511,6 @@ button {
   max-width: 470px;
   margin-left: 0;
 }
-.hero-intro-detail {
-  display: block;
-  max-width: 360px;
-  margin-top: 16px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: rgba(242, 234, 219, 0.8);
-}
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -1563,6 +1555,9 @@ button {
 .resume-link:hover svg,
 .primary-link:hover svg {
   transform: translateY(3px);
+}
+.hero-resume-link {
+  color: var(--paper);
 }
 .statement {
   position: relative;
@@ -1677,12 +1672,22 @@ button {
 .contact h2 em {
   min-width: 0;
 }
-.contact-side > .resume-link {
-  margin-top: 28px;
-  font-size: 11px;
-}
 .footer-links {
   flex-wrap: wrap;
+}
+.footer-links .profile-link,
+.footer-links .resume-link {
+  min-height: 0;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #f2eadb60;
+  color: inherit;
+  font: 700 10px var(--font-geist-mono), monospace;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+.footer-links .profile-link:hover,
+.footer-links .resume-link:hover {
+  border-color: var(--paper);
 }
 .footer-meta {
   position: relative;
@@ -1924,10 +1929,6 @@ button {
   .hero-intro {
     max-width: 440px;
     font-size: 18px;
-  }
-  .hero-intro-detail {
-    max-width: 320px;
-    font-size: 14px;
   }
   .hero-actions {
     gap: 12px 20px;

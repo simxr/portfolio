@@ -22,10 +22,11 @@ import { SignatureIntro } from '../components/signature-intro';
 
 const resumePath = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/Simar-Ahuja-Resume.pdf`;
 
-function ResumeLink() {
+function ResumeLink({ className = '' }: { className?: string }) {
   return (
-    <a className="resume-link" href={resumePath} download>
-      Resume <Download size={16} />
+    <a className={`resume-link ${className}`.trim()} href={resumePath} download>
+      Resume
+      <Download size={16} />
     </a>
   );
 }
@@ -379,15 +380,13 @@ export default function Home() {
             <span className="hero-last">Ahuja</span>
           </h1>
           <p className="hero-intro">
-            I engineer secure cloud foundations that let teams ship with confidence.
-            <span className="hero-intro-detail">
-              Secure cloud platforms. Reliable systems. Infrastructure as Code.
-            </span>
+            I engineer secure cloud foundations that make shipping safer, faster, and repeatable.
           </p>
           <div className="hero-actions">
             <a className="primary-link" href="#work">
               Explore my work <ArrowDown size={16} />
             </a>
+            <ResumeLink className="hero-resume-link" />
           </div>
         </div>
 
@@ -605,18 +604,21 @@ export default function Home() {
             Open to cloud platform, platform engineering, and cloud operations opportunities.
           </p>
           <div className="footer-links">
-            <a href="https://github.com/simxr" target="_blank" rel="noreferrer">
-              GitHub <ArrowUpRight size={14} />
+            <a className="profile-link" href="https://github.com/simxr" target="_blank" rel="noreferrer">
+              GitHub
+              <ArrowUpRight size={14} />
             </a>
             <a
+              className="profile-link"
               href="https://www.linkedin.com/in/simarahuja/"
               target="_blank"
               rel="noreferrer"
             >
-              LinkedIn <ArrowUpRight size={14} />
+              LinkedIn
+              <ArrowUpRight size={14} />
             </a>
+            <ResumeLink />
           </div>
-          <ResumeLink />
         </div>
         <div className="footer-meta">
           <span>Built with intent.</span>
