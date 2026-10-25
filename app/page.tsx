@@ -7,12 +7,10 @@ import {
   ArrowRight,
   ArrowUpRight,
   Cloud,
-  Database,
   Download,
   ExternalLink,
   Gauge,
   GitBranch,
-  GraduationCap,
   Mail,
   Menu,
   Network,
@@ -360,9 +358,6 @@ export default function Home() {
           <a href="#work" onClick={closeMenu}>
             Projects
           </a>
-          <a href="#credentials" onClick={closeMenu}>
-            Credentials
-          </a>
           <a href="#contact" onClick={closeMenu}>
             Let&apos;s talk
           </a>
@@ -463,10 +458,22 @@ export default function Home() {
           <p className="roles-label" id="focus-title">
             <span>01</span> What I work across
           </p>
-          <div>
-            <span>Jan 2025 — Present</span>
-            <strong>Cloud Automation Engineer</strong>
-            <small>ION Group · Core Architecture Team</small>
+          <div className="career-timeline" aria-label="Career timeline">
+            <article>
+              <span>Jan 2025 — Present</span>
+              <strong>Cloud Automation Engineer</strong>
+              <small>ION Group · Core Architecture Team</small>
+            </article>
+            <article>
+              <span>2021 — 2025</span>
+              <strong>B.Tech CSE, Information Security</strong>
+              <small>VIT · Branch Rank 2 · CGPA 9.67</small>
+            </article>
+            <article>
+              <span>Certification</span>
+              <strong>AWS Cloud Practitioner</strong>
+              <small>AWS Certified</small>
+            </article>
           </div>
         </div>
         <div className="role-list">
@@ -577,46 +584,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="credentials" id="credentials" data-reveal>
-        <div className="credential-title">
-          <span>03 · Credentials</span>
-          <h2>
-            Proof in the
-            <br />
-            <em>details.</em>
-          </h2>
-        </div>
-        <div className="credential-list">
-          <article>
-            <Cloud />
-            <div>
-              <small>CERTIFICATION</small>
-              <strong>AWS Cloud Practitioner</strong>
-              <span>AWS Certified</span>
-            </div>
-          </article>
-          <article>
-            <GraduationCap />
-            <div>
-              <small>EDUCATION</small>
-              <strong>Branch Rank 2 · CGPA 9.67</strong>
-              <span>B.Tech CSE, Information Security · VIT</span>
-            </div>
-          </article>
-          <article>
-            <Database />
-            <div>
-              <small>PUBLICATION</small>
-              <strong>Breast Cancer Detection Using ML</strong>
-              <span>Published in IJFMR</span>
-            </div>
-          </article>
-        </div>
-      </section>
-
       <footer className="contact" id="contact" data-reveal>
         <p className="section-kicker">
-          <span>04</span> Start a conversation
+          <span>03</span> Start a conversation
         </p>
         <h2>
           Let&apos;s build <em key={contactWords[wordIndex]}>{contactWords[wordIndex]}</em>{" "}
