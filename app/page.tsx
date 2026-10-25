@@ -422,7 +422,7 @@ export default function Home() {
         </p>
         <p>platforms for microservices.</p>
         <span className="statement-detail">
-          Cloud platforms for banking and trading workloads across seven production clusters.
+          Cloud platforms for banking and trading workloads across seven EKS clusters.
         </span>
       </section>
 
@@ -509,11 +509,11 @@ export default function Home() {
           </article>
           <article>
             <strong>~$1K</strong>
-            <span>Monthly savings per cluster</span>
+            <span>Saved per cluster</span>
           </article>
           <article>
             <strong>80%</strong>
-            <span>Bootstrap: 2 days to under 10 hours</span>
+            <span>Bootstrap: 2 days to under 5 hours</span>
           </article>
         </div>
         <div className="experience-note">
