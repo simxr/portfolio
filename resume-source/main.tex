@@ -50,30 +50,35 @@
 \vspace{4pt}
 
 \section{Summary}
-{\small Cloud Platform Engineer building secure AWS and Kubernetes platforms for banking and trading microservices. Delivers EKS automation, Terraform and Terragrunt infrastructure, Helm and Argo CD delivery, identity, and observability across seven production clusters.}
+{\small Cloud Platform Engineer developing and operating ION PaaS, an internal Kubernetes Platform-as-a-Service for banking and trading microservices. Builds versioned, secure, and observable platform releases through Terraform, Terragrunt, Helm, and Argo CD across seven production EKS clusters.}
 
 \section{Experience}
 \entry{Cloud Platform Engineer}{Jan 2025 -- Present}{ION Group, Core Architecture Team}{Gurugram, Haryana}
 \small
 
-\group{Platform Engineering}
+\group{Platform Product and Release Engineering}
+\begin{itemize}
+  \item Develop and operate ION PaaS, an internal Kubernetes platform delivered through Infrastructure as Code and GitOps.
+  \item Maintain versioned platform blueprints for ingress, certificates, secrets, observability, policy controls, identity, and application delivery.
+  \item Own platform release lifecycle activities including component version pinning, Helm and Terraform upgrades, migration guidance, configuration contracts, and GitOps reconciliation.
+  \item Troubleshoot Kubernetes runtime issues and configuration changes to keep platform upgrades repeatable for consuming teams.
+  \item Provide a validated platform release so teams deploy applications without independently assembling Kubernetes tooling.
+\end{itemize}
+
+\group{Platform Engineering and Operations}
 \begin{itemize}
   \item Standardized Terraform modules and Terragrunt pipelines across seven EKS clusters and AWS accounts, reducing configuration drift and bootstrap work for application teams.
   \item Automated Helm and Argo CD delivery for 14 banking and markets microservices.
-  \item Delivered EKS and platform-module upgrades while maintaining a 99.95\% availability SLO, validated by the chaos engineering team.
   \item Embedded SSO-ready authentication through identity brokering, allowing applications to connect external identity providers.
   \item Packaged monitoring, backup, storage, and CI/CD modules through Terraform and Azure DevOps for 12 engineering teams.
+  \item Built Grafana dashboards on Prometheus metrics to identify CPU and memory slack for resource and node right-sizing.
 \end{itemize}
 
 \group{Business Impact}
 \begin{itemize}
+  \item Delivered EKS and platform-module upgrades while maintaining a 99.95\% availability SLO, validated by the chaos engineering team.
   \item Reduced production cluster bootstrap time 80\%, from two days to under 10 hours, through Helm and Argo CD automation.
   \item Reduced EKS spend 12--13\% (about \$1K per cluster monthly) across seven clusters, measured with OpenCost.
-\end{itemize}
-
-\group{Performance Optimization}
-\begin{itemize}
-  \item Built Grafana dashboards on Prometheus metrics to identify CPU and memory slack for resource and node right-sizing.
 \end{itemize}
 
 \group{Leadership \& Operational Impact}
@@ -106,8 +111,9 @@
 \small
 \textbf{Cloud:} Amazon EKS, IAM, VPC, EC2, S3, Linux\\
 \textbf{Infrastructure as Code and CI/CD:} Terraform, Terragrunt, Cloud Posse modules, Azure DevOps Pipelines, GitHub Actions\\
-\textbf{Platform and Observability:} Kubernetes, Helm, Argo CD, GitOps, Traefik, Keycloak, Prometheus, Grafana, OpenCost\\
-\textbf{Languages and Tools:} Java, Python, Bash, YAML, Docker
+\textbf{Kubernetes Platform:} Kubernetes, Helm, Argo CD, GitOps, Cilium, Traefik, Keycloak, cert-manager, External Secrets\\
+\textbf{Observability and Policy:} Prometheus, Grafana, Alertmanager, ServiceMonitor, Kyverno, Gatekeeper, NeuVector, OpenCost\\
+\textbf{Languages and Tools:} Java, Python, Bash, YAML, HCL, Docker, Git, Kubernetes APIs
 \normalsize
 
 \section{Education}

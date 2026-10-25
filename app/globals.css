@@ -213,7 +213,7 @@ button {
 .hero h1 {
   margin: 0;
   font-size: clamp(88px, 13vw, 196px);
-  line-height: 0.72;
+  line-height: 0.82;
   letter-spacing: 0;
 }
 .hero h1 span {
@@ -226,17 +226,17 @@ button {
   animation: hero-in 0.9s 0.08s both cubic-bezier(0.22, 1, 0.36, 1);
 }
 .hero-last {
-  margin-left: 0.08em;
-  font-family: Impact, 'Arial Narrow', sans-serif;
-  font-style: normal;
+  margin-left: 0.32em;
+  font-family: Georgia, serif;
+  font-style: italic;
   font-weight: 400;
   animation: hero-in 0.9s 0.18s both cubic-bezier(0.22, 1, 0.36, 1);
 }
 .hero-intro {
-  max-width: 430px;
-  margin: 42px 0 0 auto;
-  font-size: clamp(19px, 2vw, 28px);
-  line-height: 1.28;
+  max-width: 470px;
+  margin: 34px 0 0;
+  font-size: clamp(16px, 1.35vw, 20px);
+  line-height: 1.45;
 }
 
 .systems-portrait {
@@ -1260,6 +1260,7 @@ button {
   }
   .hero h1 {
     font-size: clamp(72px, 24vw, 124px);
+    line-height: 0.86;
   }
   .hero-last {
     margin-left: 0.12em;
@@ -1267,7 +1268,7 @@ button {
   .hero-intro {
     margin: 24px 0 0;
     max-width: 310px;
-    font-size: 18px;
+    font-size: 16px;
   }
   .hero-socials {
     left: 20px;
@@ -1922,7 +1923,7 @@ button {
   }
   .hero-intro {
     max-width: 440px;
-    font-size: 23px;
+    font-size: 18px;
   }
   .hero-intro-detail {
     max-width: 320px;

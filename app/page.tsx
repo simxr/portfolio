@@ -375,9 +375,15 @@ export default function Home() {
           </div>
           <p className="eyebrow">Cloud Platform Engineer</p>
           <h1>
-            <span className="hero-first">SIMAR</span>
-            <span className="hero-last">AHUJA</span>
+            <span className="hero-first">Simar</span>
+            <span className="hero-last">Ahuja</span>
           </h1>
+          <p className="hero-intro">
+            I engineer secure cloud foundations that let teams ship with confidence.
+            <span className="hero-intro-detail">
+              Secure cloud platforms. Reliable systems. Infrastructure as Code.
+            </span>
+          </p>
           <div className="hero-actions">
             <a className="primary-link" href="#work">
               Explore my work <ArrowDown size={16} />
