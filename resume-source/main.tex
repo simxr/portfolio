@@ -1,0 +1,125 @@
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+
+\hypersetup{
+  pdftitle={Simar Ahuja - Resume},
+  pdfauthor={Simar Ahuja},
+  pdfsubject={Cloud Platform Engineer resume}
+}
+
+\pagestyle{empty}
+\setlength{\tabcolsep}{0pt}
+\raggedright
+\raggedbottom
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.0in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textheight}{1.2in}
+
+\titleformat{\section}{\large\bfseries\raggedright}{}{0em}{\MakeUppercase}[\titlerule]
+\titlespacing{\section}{0pt}{6pt}{2pt}
+\setlist[itemize]{leftmargin=0.15in, itemsep=0.5pt, topsep=1pt, parsep=0pt}
+
+\newcommand{\entry}[4]{%
+  \noindent\textbf{#1} \hfill {\small #2}\\
+  {\small #3} \hfill {\small #4}\par\vspace{1pt}%
+}
+\newcommand{\group}[1]{\vspace{2pt}\noindent\textbf{\small #1}\par\vspace{0pt}}
+\newcommand{\projectHeading}[2]{%
+  \noindent\textbf{#1} \hfill {\small #2}\par\vspace{1pt}%
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE \textbf{Simar Ahuja}}\\[3pt]
+\end{center}
+\vspace{-4pt}
+\noindent
+{\small \href{mailto:simarahuja@outlook.com}{simarahuja@outlook.com} \quad|\quad +91 9811117174}
+\hfill
+{\small Gurugram, India \quad|\quad \href{https://simxr.github.io/portfolio/}{Portfolio} \quad|\quad \href{https://www.linkedin.com/in/simarahuja/}{LinkedIn} \quad|\quad \href{https://github.com/simxr}{GitHub}}
+\vspace{4pt}
+
+\section{Summary}
+{\small Cloud Platform Engineer building secure AWS and Kubernetes platforms for banking and trading microservices. Delivers EKS automation, Terraform and Terragrunt infrastructure, Helm and Argo CD delivery, identity, and observability across seven production clusters.}
+
+\section{Experience}
+\entry{Cloud Platform Engineer}{Jan 2025 -- Present}{ION Group, Core Architecture Team}{Gurugram, Haryana}
+\small
+
+\group{Platform Engineering}
+\begin{itemize}
+  \item Standardized Terraform modules and Terragrunt pipelines across seven EKS clusters and AWS accounts, reducing configuration drift and bootstrap work for application teams.
+  \item Automated Helm and Argo CD delivery for 14 banking and markets microservices.
+  \item Delivered EKS and platform-module upgrades while maintaining a 99.95\% availability SLO, validated by the chaos engineering team.
+  \item Embedded SSO-ready authentication through identity brokering, allowing applications to connect external identity providers.
+  \item Packaged monitoring, backup, storage, and CI/CD modules through Terraform and Azure DevOps for 12 engineering teams.
+\end{itemize}
+
+\group{Business Impact}
+\begin{itemize}
+  \item Reduced production cluster bootstrap time 80\%, from two days to under 10 hours, through Helm and Argo CD automation.
+  \item Reduced EKS spend 12--13\% (about \$1K per cluster monthly) across seven clusters, measured with OpenCost.
+\end{itemize}
+
+\group{Performance Optimization}
+\begin{itemize}
+  \item Built Grafana dashboards on Prometheus metrics to identify CPU and memory slack for resource and node right-sizing.
+\end{itemize}
+
+\group{Leadership \& Operational Impact}
+\begin{itemize}
+  \item Selected for ION's Global Induction 2026 and presented engineering input to CXO leadership.
+  \item Interviewed 25+ candidates for 2027 Software Developer hiring and mentored onboarding engineers on platform standards.
+\end{itemize}
+\normalsize
+
+\section{Projects}
+\projectHeading{Ephemeral Environment Engine -- Pull-Request Preview Environments on Kubernetes}{\small \href{https://github.com/simxr/Ephemeral-Environment-Engine}{GitHub}}
+\small
+\begin{itemize}
+  \item Built pull-request preview environments with isolated Kubernetes namespaces and mock AWS dependencies.
+  \item Automated Helm and Argo CD releases with isolated infrastructure state for each pull request.
+  \item Added cleanup and policy checks for closed pull requests, privileged workloads, wildcard IAM policies, and open CIDRs.
+\end{itemize}
+\normalsize
+
+\projectHeading{Upstream -- Open-Source Issue Finder for Cloud-Native Engineers}{\small \href{https://github.com/simxr/Upstream}{GitHub} | \href{https://simxr.github.io/Upstream/}{Live Demo}}
+\small
+\begin{itemize}
+  \item Built a tool that surfaces cloud-native open-source issues from approved CNCF and AWS repositories by domain and contribution fit.
+  \item Designed a YAML-configured scoring workflow with explainable match signals and an audit trail.
+  \item Automated daily issue refresh, validation, and static site deployment with GitHub Actions.
+\end{itemize}
+\normalsize
+
+\section{Technical Skills}
+\small
+\textbf{Cloud:} Amazon EKS, IAM, VPC, EC2, S3, Linux\\
+\textbf{Infrastructure as Code and CI/CD:} Terraform, Terragrunt, Cloud Posse modules, Azure DevOps Pipelines, GitHub Actions\\
+\textbf{Platform and Observability:} Kubernetes, Helm, Argo CD, GitOps, Traefik, Keycloak, Prometheus, Grafana, OpenCost\\
+\textbf{Languages and Tools:} Java, Python, Bash, YAML, Docker
+\normalsize
+
+\section{Education}
+\entry{Vellore Institute of Technology}{2021 -- 2025}{B.Tech in Computer Science, Information Security specialization}{Vellore, Tamil Nadu}
+{\small CGPA 9.67/10 \quad|\quad Branch Rank 2 (Rank 4 in 2022--2023, Rank 3 in 2023--2024)}
+
+\section{Certifications and Publications}
+\small
+\begin{itemize}
+  \item \textbf{AWS Certified Cloud Practitioner}, Amazon Web Services \quad--\quad \href{https://www.credly.com/badges/e8c982dc-88f2-43ee-8bf6-e8e307488314}{View Badge}
+  \item \textbf{Breast Cancer Detection Using Machine Learning} (IJFMR, Vol. 6, Issue 3) \quad--\quad \href{https://www.ijfmr.com/papers/2024/3/23223.pdf}{Read Paper}
+\end{itemize}
+\normalsize
+
+\end{document}

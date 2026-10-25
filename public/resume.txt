@@ -1,58 +1,46 @@
 SIMAR AHUJA
-Cloud Automation Engineer | Gurgaon, India
-simarahuja@outlook.com
-https://www.linkedin.com/in/simarahuja/
-https://github.com/simxr
+Cloud Platform Engineer
+simarahuja@outlook.com | +91 9811117174
+https://simxr.github.io/portfolio/ | https://www.linkedin.com/in/simarahuja/ | https://github.com/simxr
 
-PROFESSIONAL SUMMARY
-SRE-focused Cloud Automation Engineer building secure, repeatable AWS and
-Kubernetes platforms for financial-markets and core-banking microservices.
+SUMMARY
+Cloud Platform Engineer building secure AWS and Kubernetes platforms for banking and trading microservices. Delivers EKS automation, Terraform and Terragrunt infrastructure, Helm and Argo CD delivery, identity, and observability across seven production clusters.
 
 EXPERIENCE
-ION Group | Cloud Automation Engineer, Core Architecture Team
-January 2025 - Present
-- Standardized AWS/EKS provisioning across 15 teams with reusable
-  Terraform/Terragrunt modules based on Cloud Posse patterns.
-- Own infrastructure automation supporting 99.96% production SLA.
-- Reduced EKS cluster spend 12-13%, saving $1,000+ per cluster monthly.
-- Reduced environment setup from days to within an hour through
-  Terraform, Helm, Argo CD, and Azure DevOps automation.
-- Standardize identity, observability, storage, backup, security, and CI/CD
-  to enable self-service infrastructure across engineering teams.
-- Selected for ION's India Global Induction 2026 to onboard new hires
-  and present engineering input to CXO/CEO leadership.
+ION Group | Cloud Platform Engineer, Core Architecture Team | Jan 2025 - Present
+- Standardized Terraform modules and Terragrunt pipelines across seven EKS clusters and AWS accounts, reducing configuration drift and bootstrap work for application teams.
+- Automated Helm and Argo CD delivery for 14 banking and markets microservices.
+- Delivered EKS and platform-module upgrades while maintaining a 99.95% availability SLO, validated by the chaos engineering team.
+- Embedded SSO-ready authentication through identity brokering, allowing applications to connect external identity providers.
+- Packaged monitoring, backup, storage, and CI/CD modules through Terraform and Azure DevOps for 12 engineering teams.
+- Reduced production cluster bootstrap time 80%, from two days to under 10 hours, through Helm and Argo CD automation.
+- Reduced EKS spend 12-13% (about $1K per cluster monthly) across seven clusters, measured with OpenCost.
+- Built Grafana dashboards on Prometheus metrics to identify CPU and memory slack for resource and node right-sizing.
+- Selected for ION's Global Induction 2026 and presented engineering input to CXO leadership.
+- Interviewed 25+ candidates for 2027 Software Developer hiring and mentored onboarding engineers on platform standards.
 
-VVDN Technologies | Python Developer Intern
-November 2023 - December 2023
-- Built Python automation for network-controller workflows and OpenNMS.
-- Improved AWS Lambda scripts and MongoDB-backed internal tooling.
+PROJECTS
+Ephemeral Environment Engine | https://github.com/simxr/Ephemeral-Environment-Engine
+- Built pull-request preview environments with isolated Kubernetes namespaces and mock AWS dependencies.
+- Automated Helm and Argo CD releases with isolated infrastructure state for each pull request.
+- Added cleanup and policy checks for closed pull requests, privileged workloads, wildcard IAM policies, and open CIDRs.
 
-SELECTED PROJECTS
-Upstream | https://github.com/simxr/Upstream
-Config-driven open-source issue discovery for cloud-native engineers.
-Deterministic Go scoring, YAML taxonomies, GitHub API integration,
-scheduled feed refresh, and GitHub Pages delivery.
-
-Ephemeral Environment Engine
-https://github.com/simxr/Ephemeral-Environment-Engine
-Local PR-scoped Kubernetes preview workflow using K3d/K3s, Helm,
-Argo CD, Terraform, Terragrunt, and LocalStack. Models ApplicationSet
-discovery, isolated namespaces, least-privilege IAM, and safe cleanup.
+Upstream | https://github.com/simxr/Upstream | https://simxr.github.io/Upstream/
+- Built a tool that surfaces cloud-native open-source issues from approved CNCF and AWS repositories by domain and contribution fit.
+- Designed a YAML-configured scoring workflow with explainable match signals and an audit trail.
+- Automated daily issue refresh, validation, and static site deployment with GitHub Actions.
 
 SKILLS
-Cloud: AWS (EKS, VPC, S3, EC2, IAM, RDS, ElastiCache, DynamoDB,
-EBS CSI, CloudWatch, X-Ray)
-Platform: Kubernetes, Helm, Argo CD, Traefik, Keycloak, Karpenter, HPA
-Observability: kube-prometheus-stack, OpenTelemetry, Prometheus, Grafana
-Infrastructure and delivery: Terraform, Terragrunt, Cloud Posse,
-Azure DevOps Pipelines, GitHub Actions, Docker
-Programming: Java, Python, Bash, YAML
+Cloud: Amazon EKS, IAM, VPC, EC2, S3, Linux
+Infrastructure as Code and CI/CD: Terraform, Terragrunt, Cloud Posse modules, Azure DevOps Pipelines, GitHub Actions
+Platform and Observability: Kubernetes, Helm, Argo CD, GitOps, Traefik, Keycloak, Prometheus, Grafana, OpenCost
+Languages and Tools: Java, Python, Bash, YAML, Docker
 
 EDUCATION
 Vellore Institute of Technology | 2021 - 2025
-B.Tech Computer Science, specialization in Information Security
-CGPA: 9.67/10 | Branch Rank: 2
+B.Tech in Computer Science, Information Security specialization
+CGPA 9.67/10 | Branch Rank 2
 
-CERTIFICATIONS AND PUBLICATION
-AWS Certified Cloud Practitioner
-Published: Breast Cancer Detection Using Machine Learning, IJFMR
+CERTIFICATIONS AND PUBLICATIONS
+AWS Certified Cloud Practitioner | https://www.credly.com/badges/e8c982dc-88f2-43ee-8bf6-e8e307488314
+Breast Cancer Detection Using Machine Learning (IJFMR, Vol. 6, Issue 3) | https://www.ijfmr.com/papers/2024/3/23223.pdf

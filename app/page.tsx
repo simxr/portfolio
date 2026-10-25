@@ -20,7 +20,7 @@ import {
 import { useEffect, useRef, useState } from 'react';
 import { SignatureIntro } from '../components/signature-intro';
 
-const resumePath = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/resume.txt`;
+const resumePath = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/Simar-Ahuja-Resume.pdf`;
 
 function ResumeLink() {
   return (
@@ -37,31 +37,31 @@ const workAreas = [
     label: 'Cloud Automation',
     headline: 'Automation for critical systems.',
     detail:
-      'I own infrastructure automation for microservices across financial markets and core banking on EKS—turning complex operational requirements into dependable platform capabilities.',
-    tags: ['AWS', 'EKS', 'Core Cloud Architecture'],
+      'I standardize Terraform modules and Terragrunt pipelines across seven EKS clusters and AWS accounts, reducing configuration drift and bootstrap work for application teams.',
+    tags: ['Terraform', 'Terragrunt', 'Amazon EKS'],
   },
   {
     icon: Network,
     label: 'Platform Engineering',
     headline: 'Production platforms, end to end.',
     detail:
-      'I bootstrap production EKS clusters through Terraform, Helm, Argo CD, and Azure DevOps, then standardize Keycloak identity, kube-prometheus-stack observability, storage and backup, security, and CI/CD.',
+      'I automate Helm and Argo CD delivery for banking and markets microservices, with identity, monitoring, backup, storage, and CI/CD built into the platform.',
     tags: ['Helm', 'Argo CD', 'Keycloak', 'Docker'],
   },
   {
     icon: Gauge,
-    label: 'SRE',
-    headline: 'Reliability you can measure.',
+    label: 'Platform Operations',
+    headline: 'Reliable, efficient clusters.',
     detail:
-      'I apply SRE and AWS Well-Architected principles alongside Prometheus and Grafana utilization analysis to keep mission-critical workloads reliable and efficient.',
-    tags: ['kube-prometheus-stack', 'Right-sizing', 'Karpenter'],
+      'I build Grafana dashboards on Prometheus metrics to identify CPU and memory slack for workload right-sizing and node planning.',
+    tags: ['Prometheus', 'Grafana', 'OpenCost'],
   },
   {
     icon: GitBranch,
     label: 'Infrastructure as Code',
     headline: 'Secure foundations, made reusable.',
     detail:
-      'I architect Terraform and Terragrunt modules with Cloud Posse patterns so AWS and EKS provisioning is secure, repeatable, and easier for engineering teams to adopt.',
+      'I package monitoring, backup, storage, and CI/CD through Terraform and Azure DevOps for 12 engineering teams.',
     tags: ['Terraform', 'Terragrunt', 'Cloud Posse'],
   },
 ];
@@ -373,17 +373,11 @@ export default function Home() {
           <div className="hero-status">
             <span /> Building at ION Group
           </div>
-          <p className="eyebrow">Cloud Automation Engineer · Gurgaon, India</p>
+          <p className="eyebrow">Cloud Platform Engineer</p>
           <h1>
-            <span className="hero-first">Simar</span>
-            <span className="hero-last">Ahuja</span>
+            <span className="hero-first">SIMAR</span>
+            <span className="hero-last">AHUJA</span>
           </h1>
-          <p className="hero-intro">
-            I engineer secure cloud foundations that let teams ship with confidence.
-            <span className="hero-intro-detail">
-              Secure cloud platforms. Reliable systems. Infrastructure as Code.
-            </span>
-          </p>
           <div className="hero-actions">
             <a className="primary-link" href="#work">
               Explore my work <ArrowDown size={16} />
@@ -427,7 +421,7 @@ export default function Home() {
           {[0, 1].map((group) => (
             <span key={group} aria-hidden={group === 1}>
               Cloud automation <i>✦</i> Platform engineering <i>✦</i>{' '}
-              Reliability <i>✦</i> Infrastructure as code <i>✦</i>
+              Platform operations <i>✦</i> Infrastructure as code <i>✦</i>
             </span>
           ))}
         </div>
@@ -435,13 +429,11 @@ export default function Home() {
 
       <section className="statement" id="statement" data-reveal>
         <p>
-          <em>from</em> infrastructure
+          <em>secure</em> AWS and Kubernetes
         </p>
-        <p>to dependable systems.</p>
+        <p>platforms for microservices.</p>
         <span className="statement-detail">
-          I build the foundations that help engineering teams move faster.
-          <br />
-          And keep the critical systems behind them running.
+          Cloud platforms for banking and trading workloads across seven production clusters.
         </span>
       </section>
 
@@ -461,7 +453,7 @@ export default function Home() {
           <div className="career-timeline" aria-label="Career timeline">
             <article>
               <span>Jan 2025 — Present</span>
-              <strong>Cloud Automation Engineer</strong>
+              <strong>Cloud Platform Engineer</strong>
               <small>ION Group · Core Architecture Team</small>
             </article>
             <article>
@@ -519,28 +511,27 @@ export default function Home() {
           aria-label="Verified production outcomes"
         >
           <article>
-            <strong>99.96%</strong>
-            <span>Production SLA sustained</span>
+            <strong>99.95%</strong>
+            <span>Availability SLO maintained</span>
           </article>
           <article>
             <strong>12-13%</strong>
             <span>EKS cluster cost reduction</span>
           </article>
           <article>
-            <strong>&gt;$1,000</strong>
+            <strong>~$1K</strong>
             <span>Monthly savings per cluster</span>
           </article>
           <article>
-            <strong>&lt;1 hour</strong>
-            <span>Environment setup, down from days</span>
+            <strong>80%</strong>
+            <span>Bootstrap: 2 days to under 10 hours</span>
           </article>
         </div>
         <div className="experience-note">
           <span>BUILT FOR TEAMS</span>
           <p>
-            Reusable AWS and EKS foundations adopted across{' '}
-            <strong>15 teams</strong>, from development to production. Secure
-            defaults, repeatable delivery, and infrastructure engineers can own.
+            Terraform, Azure DevOps, and platform modules support{' '}
+            <strong>12 engineering teams</strong> across banking and markets workloads.
           </p>
         </div>
       </section>
@@ -554,12 +545,29 @@ export default function Home() {
           <p>Swipe through two focused builds.</p>
         </div>
         <div className="project-rail" aria-label="Selected projects">
+          <article className="project-card project-card-eee">
+            <div className="project-card-topline"><span>01 / Developer platform</span><span>Kubernetes · GitOps</span></div>
+            <div className="project-card-copy">
+              <div className="project-mark"><Terminal size={22} /><span>EEE</span></div>
+              <h3>Preview environments, <em>on demand.</em></h3>
+              <p>Pull-request previews with isolated namespaces, mock AWS dependencies, and policy checks.</p>
+            </div>
+            <div className="project-card-visual eee-card-visual" aria-label="Preview environment workflow">
+              <small>PR #42 OPENED</small>
+              <div className="mini-pipeline"><span>Discover</span><ArrowRight size={14}/><span>Provision</span><ArrowRight size={14}/><span>Deploy</span></div>
+              <strong>env-pr-42 <b>READY</b></strong>
+            </div>
+            <div className="project-links">
+              <a href="https://github.com/simxr/Ephemeral-Environment-Engine" target="_blank" rel="noreferrer">Source <ArrowUpRight size={15}/></a>
+            </div>
+          </article>
+
           <article className="project-card project-card-upstream">
-            <div className="project-card-topline"><span>01 / Open source</span><span>Go · GitHub API</span></div>
+            <div className="project-card-topline"><span>02 / Open source</span><span>GitHub API · YAML</span></div>
             <div className="project-card-copy">
               <div className="project-mark"><GitBranch size={22} /><span>Upstream</span></div>
-              <h3>Find the right <em>issue.</em></h3>
-              <p>Explainable issue discovery for cloud-native contributors.</p>
+              <h3>Discover a fitting <em>issue.</em></h3>
+              <p>Ranks cloud-native contribution opportunities from approved CNCF and AWS repositories.</p>
             </div>
             <div className="project-card-visual upstream-card-visual" aria-label="Upstream match example">
               <small>MATCHED OPPORTUNITY</small>
@@ -569,23 +577,6 @@ export default function Home() {
             <div className="project-links">
               <a href="https://simxr.github.io/Upstream/" target="_blank" rel="noreferrer">Live product <ExternalLink size={15} /></a>
               <a href="https://github.com/simxr/Upstream" target="_blank" rel="noreferrer">Source <ArrowUpRight size={15} /></a>
-            </div>
-          </article>
-
-          <article className="project-card project-card-eee">
-            <div className="project-card-topline"><span>02 / Developer platform</span><span>Kubernetes · Argo CD</span></div>
-            <div className="project-card-copy">
-              <div className="project-mark"><Terminal size={22} /><span>EEE</span></div>
-              <h3>Every PR gets an <em>environment.</em></h3>
-              <p>Local, production-minded previews with guardrails built in.</p>
-            </div>
-            <div className="project-card-visual eee-card-visual" aria-label="Preview environment workflow">
-              <small>PR #42 OPENED</small>
-              <div className="mini-pipeline"><span>Discover</span><ArrowRight size={14}/><span>Provision</span><ArrowRight size={14}/><span>Deploy</span></div>
-              <strong>env-pr-42 <b>READY</b></strong>
-            </div>
-            <div className="project-links">
-              <a href="https://github.com/simxr/Ephemeral-Environment-Engine" target="_blank" rel="noreferrer">Source <ArrowUpRight size={15}/></a>
             </div>
           </article>
         </div>
@@ -605,8 +596,7 @@ export default function Home() {
             simarahuja@outlook.com
           </a>
           <p>
-            Open to cloud automation, platform engineering, and SRE
-            opportunities.
+            Open to cloud platform, platform engineering, and cloud operations opportunities.
           </p>
           <div className="footer-links">
             <a href="https://github.com/simxr" target="_blank" rel="noreferrer">
@@ -623,7 +613,7 @@ export default function Home() {
           <ResumeLink />
         </div>
         <div className="footer-meta">
-          <span>Gurgaon, India · Built with intent.</span>
+          <span>Built with intent.</span>
           <a href="#home">Back to top ↑</a>
         </div>
       </footer>
