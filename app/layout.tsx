@@ -12,6 +12,8 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ??
@@ -20,6 +22,14 @@ export const metadata: Metadata = {
   title: 'Simar Ahuja | Cloud Platform Engineer',
   description:
     'Cloud Platform Engineer building secure AWS, EKS, Terraform, and GitOps systems.',
+  icons: {
+    icon: [
+      {
+        url: `${basePath}/icon.svg`,
+        type: 'image/svg+xml',
+      },
+    ],
+  },
   openGraph: {
     title: 'Simar Ahuja | Cloud Platform Engineer',
     description:
