@@ -395,25 +395,6 @@ export default function Home() {
 
         <AsciiPortrait />
 
-        <div className="hero-socials" aria-label="Social links">
-          <a
-            href="https://github.com/simxr"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="GitHub"
-          >
-            <span className="brand-mark">GH</span>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/simarahuja/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="LinkedIn"
-          >
-            <span className="brand-mark">in</span>
-          </a>
-        </div>
-
         <a
           className="scroll-cue"
           href="#statement"
