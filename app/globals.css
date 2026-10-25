@@ -1138,13 +1138,13 @@ button {
 
 .contact {
   position: relative;
-  min-height: 112vh;
+  min-height: 720px;
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: minmax(0, 1.15fr) minmax(290px, 0.85fr);
   align-content: center;
-  gap: 8vw;
+  gap: 6vw;
   overflow: hidden;
-  padding: 100px 7vw 230px;
+  padding: 138px 7vw 44px;
   background: radial-gradient(
     circle at 18% 25%,
     #ed7727 0,
@@ -1171,8 +1171,8 @@ button {
 .contact h2 {
   margin: 0;
   font-family: Impact, 'Arial Narrow', sans-serif;
-  font-size: clamp(76px, 10vw, 155px);
-  line-height: 0.75;
+  font-size: clamp(52px, 6vw, 94px);
+  line-height: 0.98;
   text-transform: uppercase;
 }
 .contact h2 em {
@@ -1185,7 +1185,7 @@ button {
 }
 .contact-side {
   align-self: center;
-  padding-top: 70px;
+  padding-top: 0;
 }
 .contact-side > a {
   display: inline-flex;
@@ -1211,19 +1211,6 @@ button {
   font: 700 10px monospace;
   text-transform: uppercase;
 }
-.giant-name {
-  position: absolute;
-  right: -1.5vw;
-  bottom: -3vw;
-  left: -1.5vw;
-  font-family: Impact, 'Arial Narrow', sans-serif;
-  font-size: 26vw;
-  line-height: 0.68;
-  text-align: center;
-  color: rgba(242, 234, 219, 0.92);
-  pointer-events: none;
-}
-
 @keyframes word-in {
   from {
     opacity: 0;
@@ -1482,10 +1469,6 @@ button {
   .contact-side > a {
     font-size: 16px;
   }
-  .giant-name {
-    bottom: 0;
-    font-size: 29vw;
-  }
 }
 
 /* Signature, editorial rhythm, and progressive motion. */
@@ -1733,13 +1716,13 @@ button {
   }
 }
 .contact {
-  min-height: 1100px;
-  padding-bottom: 360px;
+  min-height: 720px;
+  padding: 138px 7vw 44px;
   column-gap: 5vw;
 }
 .contact h2 {
-  font-size: clamp(58px, 7.6vw, 122px);
-  line-height: 0.93;
+  font-size: clamp(52px, 6vw, 94px);
+  line-height: 0.98;
 }
 .contact h2 em {
   min-width: 0;
@@ -1752,53 +1735,23 @@ button {
   flex-wrap: wrap;
 }
 .footer-meta {
-  position: absolute;
+  position: relative;
+  grid-column: 1 / -1;
   z-index: 2;
-  left: 7vw;
-  right: 7vw;
-  bottom: 28vw;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 18px 28px;
-  padding-top: 22px;
+  margin-top: 8px;
+  padding-top: 18px;
   border-top: 1px solid #f2eadb50;
   font: 10px/1.5 monospace;
 }
 .footer-meta > span {
   margin-right: auto;
 }
-.footer-meta button {
-  border: 0;
-  background: transparent;
-  padding: 10px 0;
-  cursor: pointer;
-}
-.giant-name {
-  left: 0;
-  right: 0;
-  bottom: -1vw;
-  overflow: hidden;
-  font-size: 25vw;
-  line-height: 0.85;
-  text-align: center;
-  transform-origin: center bottom;
-}
-@keyframes footer-grow {
-  from {
-    transform: scale(0.94);
-  }
-  to {
-    transform: scale(1);
-  }
-}
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .giant-name {
-      animation: footer-grow linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 100%;
-    }
     .statement p {
       animation: statement-arrive linear both;
       animation-timeline: view();
@@ -1970,29 +1923,25 @@ button {
     font-size: 10px;
   }
   .contact {
-    min-height: 900px;
-    padding: 145px 24px 240px;
-    gap: 32px;
+    min-height: auto;
+    padding: 118px 24px 40px;
+    gap: 28px;
   }
   .contact h2 {
-    font-size: clamp(48px, 11.5vw, 86px);
-    line-height: 1;
+    font-size: clamp(42px, 9vw, 58px);
+    line-height: 1.04;
   }
   .contact-side > a {
     overflow-wrap: anywhere;
   }
   .footer-meta {
-    left: 24px;
-    right: 24px;
-    bottom: 33vw;
+    position: relative;
+    grid-column: 1 / -1;
+    margin-top: 4px;
     gap: 8px 24px;
   }
   .footer-meta > span {
     flex-basis: 100%;
-  }
-  .giant-name {
-    bottom: 0;
-    font-size: 29vw;
   }
   .menu-overlay {
     padding-inline: 24px;
@@ -2040,11 +1989,5 @@ button {
   .statement p,
   .featured-heading h2 {
     animation: none;
-  }
-  .giant-name {
-    transform: none;
-  }
-  .footer-meta button {
-    display: none;
   }
 }

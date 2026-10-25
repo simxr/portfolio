@@ -788,9 +788,6 @@ export default function Home() {
           <span>Gurgaon, India · Built with intent.</span>
           <a href="#home">Back to top ↑</a>
         </div>
-        <div className="giant-name" aria-hidden="true">
-          AHUJA
-        </div>
       </footer>
     </main>
   );
