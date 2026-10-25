@@ -380,9 +380,12 @@ export default function Home() {
             <span className="hero-last">Ahuja</span>
           </h1>
           <p className="hero-intro">
-            I engineer secure cloud foundations that make shipping safer, faster, and repeatable.
+            I engineer secure, observable cloud foundations that turn complex operations into reliable, repeatable delivery.
           </p>
           <div className="hero-actions">
+            <a className="focus-link" href="#focus">
+              What I work across <ArrowDown size={16} />
+            </a>
             <a className="primary-link" href="#work">
               Explore my work <ArrowDown size={16} />
             </a>
