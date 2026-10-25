@@ -25,16 +25,16 @@
 \addtolength{\textheight}{1.2in}
 
 \titleformat{\section}{\large\bfseries\raggedright}{}{0em}{\MakeUppercase}[\titlerule]
-\titlespacing{\section}{0pt}{6pt}{2pt}
+\titlespacing{\section}{0pt}{8pt}{4pt}
 \setlist[itemize]{leftmargin=0.15in, itemsep=0.5pt, topsep=1pt, parsep=0pt}
 
 \newcommand{\entry}[4]{%
   \noindent\textbf{#1} \hfill {\small #2}\\
-  {\small #3} \hfill {\small #4}\par\vspace{1pt}%
+  {\small #3} \hfill {\small #4}\par\vspace{2pt}%
 }
-\newcommand{\group}[1]{\vspace{2pt}\noindent\textbf{\small #1}\par\vspace{0pt}}
+\newcommand{\group}[1]{\vspace{3pt}\noindent\textbf{\small #1}\par\vspace{1pt}}
 \newcommand{\projectHeading}[2]{%
-  \noindent\textbf{#1} \hfill {\small #2}\par\vspace{1pt}%
+  \noindent\textbf{#1} \hfill {\small #2}\par\vspace{2pt}%
 }
 
 \begin{document}
@@ -44,87 +44,88 @@
 \end{center}
 \vspace{-4pt}
 \noindent
-{\small \href{mailto:simarahuja@outlook.com}{simarahuja@outlook.com} \quad|\quad +91 9811117174}
+{\small \href{mailto:simahu.work@gmail.com}{simahu.work@gmail.com} \quad|\quad +91 9811117174}
 \hfill
 {\small Gurugram, India \quad|\quad \href{https://simxr.github.io/portfolio/}{Portfolio} \quad|\quad \href{https://www.linkedin.com/in/simarahuja/}{LinkedIn} \quad|\quad \href{https://github.com/simxr}{GitHub}}
 \vspace{4pt}
 
 \section{Summary}
-{\small Cloud Platform Engineer developing and operating ION PaaS, an internal Kubernetes Platform-as-a-Service for banking and trading microservices. Builds versioned, secure, and observable platform releases through Terraform, Terragrunt, Helm, and Argo CD across seven production EKS clusters.}
+{\small Cloud Platform Engineer developing and operating a secure, observable internal Kubernetes platform through Infrastructure as Code. Uses Cloud Posse modules and CNCF-aligned tooling to provision networking, storage, backup, monitoring, and delivery foundations for banking and trading microservices.}
 
 \section{Experience}
 \entry{Cloud Platform Engineer}{Jan 2025 -- Present}{ION Group, Core Architecture Team}{Gurugram, Haryana}
 \small
 
-\group{Platform Product and Release Engineering}
+\group{Platform Engineering and Delivery}
 \begin{itemize}
-  \item Develop and operate ION PaaS, an internal Kubernetes platform delivered through Infrastructure as Code and GitOps.
-  \item Maintain versioned platform blueprints for ingress, certificates, secrets, observability, policy controls, identity, and application delivery.
-  \item Own platform release lifecycle activities including component version pinning, Helm and Terraform upgrades, migration guidance, configuration contracts, and GitOps reconciliation.
-  \item Troubleshoot Kubernetes runtime issues and configuration changes to keep platform upgrades repeatable for consuming teams.
-  \item Provide a validated platform release so teams deploy applications without independently assembling Kubernetes tooling.
+  \item Develop and operate an internal Kubernetes platform for secure, observable microservice delivery across \textbf{7} EKS clusters supporting banking and trading workloads.
+  \item Delivered Terraform-managed platform services through Terragrunt pipelines in Azure DevOps, standardizing monitoring, backup, and storage setups for \textbf{12} teams.
+  \item Defined reusable Terraform modules for ingress, secrets, observability, backups, storage, policy controls, and federated SSO for \textbf{12} engineering teams.
+  \item Resolved platform release, configuration, and runtime issues across \textbf{7} EKS clusters, making upgrades safer and repeatable for consuming teams.
 \end{itemize}
 
-\group{Platform Engineering and Operations}
+\group{Performance Optimization}
 \begin{itemize}
-  \item Standardized Terraform modules and Terragrunt pipelines across seven EKS clusters and AWS accounts, reducing configuration drift and bootstrap work for application teams.
-  \item Automated Helm and Argo CD delivery for 14 banking and markets microservices.
-  \item Embedded SSO-ready authentication through identity brokering, allowing applications to connect external identity providers.
-  \item Packaged monitoring, backup, storage, and CI/CD modules through Terraform and Azure DevOps for 12 engineering teams.
-  \item Built Grafana dashboards on Prometheus metrics to identify CPU and memory slack for resource and node right-sizing.
+  \item Developed Grafana dashboards from Prometheus metrics across \textbf{3} production clusters to inform capacity utilization and right-sizing decisions.
+  \item Delivered EKS and platform upgrades while maintaining a \textbf{99.95\%} availability SLO during chaos testing.
 \end{itemize}
 
 \group{Business Impact}
 \begin{itemize}
-  \item Delivered EKS and platform-module upgrades while maintaining a 99.95\% availability SLO, validated by the chaos engineering team.
-  \item Reduced production cluster bootstrap time 80\%, from two days to under 10 hours, through Helm and Argo CD automation.
-  \item Reduced EKS spend 12--13\% (about \$1K per cluster monthly) across seven clusters, measured with OpenCost.
+  \item Reduced time to application go-live by \textbf{80\%} (from \textbf{2} days to under \textbf{5 hours}) through cluster-bootstrap automation.
+  \item Cut EKS infrastructure spend by \textbf{12-13\%} (\textbf{\$1,000} per cluster) across \textbf{3} production clusters, improving cloud cost efficiency.
 \end{itemize}
 
 \group{Leadership \& Operational Impact}
 \begin{itemize}
-  \item Selected for ION's Global Induction 2026 and presented engineering input to CXO leadership.
-  \item Interviewed 25+ candidates for 2027 Software Developer hiring and mentored onboarding engineers on platform standards.
+  \item Mentored onboarding hires during ION Global Induction 2026, supporting a cohort of \textbf{350+} new hires from across the globe.
+  \item Represented the Core Architecture Team in executive strategic planning with the Group CEO and \textbf{10+} CXOs at Global Induction.
+  \item Interviewed \textbf{25+} candidates for software developer roles during the 2027 on-campus hiring drive.
 \end{itemize}
 \normalsize
 
 \section{Projects}
-\projectHeading{Ephemeral Environment Engine -- Pull-Request Preview Environments on Kubernetes}{\small \href{https://github.com/simxr/Ephemeral-Environment-Engine}{GitHub}}
+\projectHeading{Ephemeral Environment Engine}{\small \href{https://github.com/simxr/Ephemeral-Environment-Engine}{GitHub}}
 \small
+\textit{Kubernetes, Helm, Argo CD, Terraform, Terragrunt, GitOps}\par\vspace{1pt}
 \begin{itemize}
-  \item Built pull-request preview environments with isolated Kubernetes namespaces and mock AWS dependencies.
-  \item Automated Helm and Argo CD releases with isolated infrastructure state for each pull request.
-  \item Added cleanup and policy checks for closed pull requests, privileged workloads, wildcard IAM policies, and open CIDRs.
+  \item Provisioned pull-request preview environments using isolated Kubernetes namespaces and mock AWS dependencies.
+  \item Orchestrated Helm and Argo CD deployments with isolated infrastructure state per pull request.
+  \item Implemented cleanup scripts and policy checks for privileged workloads and wildcard IAM policies.
 \end{itemize}
 \normalsize
 
-\projectHeading{Upstream -- Open-Source Issue Finder for Cloud-Native Engineers}{\small \href{https://github.com/simxr/Upstream}{GitHub} | \href{https://simxr.github.io/Upstream/}{Live Demo}}
+\projectHeading{Upstream - Cloud-Native Issue Finder}{\small \href{https://github.com/simxr/Upstream}{GitHub} | \href{https://simxr.github.io/Upstream/}{Live Demo}}
 \small
+\textit{YAML, GitHub Search API, GitHub Actions, static site delivery}\par\vspace{1pt}
 \begin{itemize}
-  \item Built a tool that surfaces cloud-native open-source issues from approved CNCF and AWS repositories by domain and contribution fit.
-  \item Designed a YAML-configured scoring workflow with explainable match signals and an audit trail.
-  \item Automated daily issue refresh, validation, and static site deployment with GitHub Actions.
+  \item Developed a search engine surfacing open-source issues from approved CNCF and AWS repositories by domain and skill fit.
+  \item Designed a YAML-configured scoring workflow with explainable match signals and audit trails.
+  \item Scheduled daily issue refresh, validation, and static site deployment using GitHub Actions.
 \end{itemize}
 \normalsize
 
 \section{Technical Skills}
 \small
-\textbf{Cloud:} Amazon EKS, IAM, VPC, EC2, S3, Linux\\
-\textbf{Infrastructure as Code and CI/CD:} Terraform, Terragrunt, Cloud Posse modules, Azure DevOps Pipelines, GitHub Actions\\
-\textbf{Kubernetes Platform:} Kubernetes, Helm, Argo CD, GitOps, Cilium, Traefik, Keycloak, cert-manager, External Secrets\\
-\textbf{Observability and Policy:} Prometheus, Grafana, Alertmanager, ServiceMonitor, Kyverno, Gatekeeper, NeuVector, OpenCost\\
-\textbf{Languages and Tools:} Java, Python, Bash, YAML, HCL, Docker, Git, Kubernetes APIs
+\textbf{Cloud:} Amazon EKS, ECS, RDS, EC2, S3, IAM\\
+\textbf{Infrastructure as Code and CI and CD:} Terraform, Terragrunt, Azure DevOps Pipelines, GitHub Actions\\
+\textbf{Kubernetes Platform and Observability:} Kubernetes, Helm, Argo CD, Cilium, Traefik, Keycloak, Prometheus, Grafana\\
+\textbf{Languages and Tools:} Java, Python, YAML, HCL, Docker, Git, Linux
 \normalsize
 
 \section{Education}
 \entry{Vellore Institute of Technology}{2021 -- 2025}{B.Tech in Computer Science, Information Security specialization}{Vellore, Tamil Nadu}
-{\small CGPA 9.67/10 \quad|\quad Branch Rank 2 (Rank 4 in 2022--2023, Rank 3 in 2023--2024)}
+{\small \textbf{CGPA 9.67/10} \quad|\quad \textbf{Graduated Branch Rank 2} (Rank 3 in 2023--2024)}
+
+\vspace{4pt}
+\entry{GD Goenka Public School}{2015 -- 2021}{Primary and Secondary Education}{Gurgaon, Haryana}
+{\small \textbf{10th Grade: 97.4\%} \quad|\quad \textbf{12th Grade: 97.2\%}}
 
 \section{Certifications and Publications}
 \small
 \begin{itemize}
-  \item \textbf{AWS Certified Cloud Practitioner}, Amazon Web Services \quad--\quad \href{https://www.credly.com/badges/e8c982dc-88f2-43ee-8bf6-e8e307488314}{View Badge}
-  \item \textbf{Breast Cancer Detection Using Machine Learning} (IJFMR, Vol. 6, Issue 3) \quad--\quad \href{https://www.ijfmr.com/papers/2024/3/23223.pdf}{Read Paper}
+  \item \textbf{AWS Certified Cloud Practitioner}, Amazon Web Services \quad|\quad \href{https://www.credly.com/badges/e8c982dc-88f2-43ee-8bf6-e8e307488314}{View Badge}
+  \item \textbf{Breast Cancer Detection Using Machine Learning} (IJFMR, Vol. 6, Issue 3) \quad|\quad \href{https://www.ijfmr.com/papers/2024/3/23223.pdf}{Read Paper}
 \end{itemize}
 \normalsize
 

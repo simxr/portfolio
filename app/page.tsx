@@ -324,7 +324,7 @@ export default function Home() {
         </a>
         <a
           className="nav-action nav-contact"
-          href="mailto:simarahuja@outlook.com"
+          href="mailto:simahu.work@gmail.com"
         >
           Let&apos;s talk <ArrowUpRight size={17} />
         </a>
@@ -364,7 +364,7 @@ export default function Home() {
         </nav>
         <div className="menu-reachout">
           <span>Reach out</span>
-          <a href="mailto:simarahuja@outlook.com">simarahuja@outlook.com</a>
+          <a href="mailto:simahu.work@gmail.com">simahu.work@gmail.com</a>
         </div>
       </dialog>
 
@@ -597,9 +597,9 @@ export default function Home() {
           together.
         </h2>
         <div className="contact-side">
-          <a href="mailto:simarahuja@outlook.com">
+          <a href="mailto:simahu.work@gmail.com">
             <Mail size={19} />
-            simarahuja@outlook.com
+            simahu.work@gmail.com
           </a>
           <p>
             Open to cloud platform, platform engineering, and cloud operations opportunities.
