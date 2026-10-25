@@ -12,13 +12,10 @@ import {
   ExternalLink,
   Gauge,
   GitBranch,
-  GitPullRequest,
   GraduationCap,
   Mail,
   Menu,
   Network,
-  Server,
-  Shield,
   Terminal,
   X,
 } from 'lucide-react';
@@ -534,182 +531,49 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="featured-heading" id="work" data-reveal>
-        <span>02 · Selected work</span>
-        <h2>
-          Featured
-          <br />
-          <em>systems</em>
-        </h2>
-      </section>
-
-      <section className="project project-upstream" data-reveal>
-        <div className="project-topline">
-          <span>01 / Open-source intelligence</span>
-          <span>Go · Next.js · GitHub API</span>
+      <section className="projects" id="work" data-reveal>
+        <div className="projects-heading">
+          <div>
+            <span>02 · Selected work</span>
+            <h2>Projects that ship.</h2>
+          </div>
+          <p>Swipe through two focused builds.</p>
         </div>
-        <div className="project-grid">
-          <div className="project-copy">
-            <div className="project-mark">
-              <GitBranch size={28} />
-              <span>Upstream</span>
+        <div className="project-rail" aria-label="Selected projects">
+          <article className="project-card project-card-upstream">
+            <div className="project-card-topline"><span>01 / Open source</span><span>Go · GitHub API</span></div>
+            <div className="project-card-copy">
+              <div className="project-mark"><GitBranch size={22} /><span>Upstream</span></div>
+              <h3>Find the right <em>issue.</em></h3>
+              <p>Explainable issue discovery for cloud-native contributors.</p>
             </div>
-            <h3>
-              Find the right issue.
-              <br />
-              <em>Understand why.</em>
-            </h3>
-            <p>
-              Less searching. More contributing. A config-driven discovery tool
-              that matches cloud-native engineers with relevant open-source
-              issues. Ranks curated opportunities by domain, skill signals, and
-              contribution shape, then exposes every scoring reason.
-            </p>
+            <div className="project-card-visual upstream-card-visual" aria-label="Upstream match example">
+              <small>MATCHED OPPORTUNITY</small>
+              <strong>Improve Helm release validation</strong>
+              <div><span>Kubernetes</span><span>Helm</span><span>8.0 match</span></div>
+            </div>
             <div className="project-links">
-              <a
-                href="https://simxr.github.io/Upstream/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Live product <ExternalLink size={15} />
-              </a>
-              <a
-                href="https://github.com/simxr/Upstream"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Source <ArrowUpRight size={15} />
-              </a>
+              <a href="https://simxr.github.io/Upstream/" target="_blank" rel="noreferrer">Live product <ExternalLink size={15} /></a>
+              <a href="https://github.com/simxr/Upstream" target="_blank" rel="noreferrer">Source <ArrowUpRight size={15} /></a>
             </div>
-          </div>
-          <div className="upstream-visual" aria-label="Upstream data flow">
-            <div className="visual-toolbar">
-              <span />
-              <span />
-              <span />
-              <b>UPSTREAM / EXAMPLE MATCH</b>
-            </div>
-            <div className="issue-result">
-              <div className="issue-score">
-                <span>8.0</span>
-                <svg viewBox="0 0 100 100" aria-hidden="true">
-                  <circle cx="50" cy="50" r="46" />
-                </svg>
-              </div>
-              <div>
-                <small>MATCHED OPPORTUNITY</small>
-                <strong>Improve Helm release validation</strong>
-              </div>
-            </div>
-            <div className="signal-row">
-              <span>Kubernetes</span>
-              <span>Helm</span>
-              <span>bug-fix</span>
-            </div>
-            <div className="reason-list">
-              <p>
-                <b>+2</b> infrastructure-as-code domain
-              </p>
-              <p>
-                <b>+1</b> matched Helm skill signal
-              </p>
-              <p>
-                <b>+1</b> preferred contribution shape
-              </p>
-            </div>
-            <div className="visual-footer">
-              <span>Curated YAML</span>
-              <ArrowRight size={15} />
-              <span>Go scorer</span>
-              <ArrowRight size={15} />
-              <span>Static feed</span>
-            </div>
-          </div>
-        </div>
-        <div className="project-foot">
-          <span>Deterministic scoring</span>
-          <span>Scheduled GitHub Actions refresh</span>
-          <span>No backend infrastructure</span>
-        </div>
-      </section>
+          </article>
 
-      <section className="project project-eee" data-reveal>
-        <div className="project-topline">
-          <span>02 / Developer platform</span>
-          <span>Kubernetes · Argo CD · Terraform</span>
-        </div>
-        <div className="project-grid reverse">
-          <div
-            className="eee-visual"
-            aria-label="Ephemeral Environment Engine workflow"
-          >
-            <div className="pipeline-head">
-              <GitPullRequest size={20} />
-              <span>PR #42 opened</span>
-              <small>PREVIEW REQUESTED</small>
+          <article className="project-card project-card-eee">
+            <div className="project-card-topline"><span>02 / Developer platform</span><span>Kubernetes · Argo CD</span></div>
+            <div className="project-card-copy">
+              <div className="project-mark"><Terminal size={22} /><span>EEE</span></div>
+              <h3>Every PR gets an <em>environment.</em></h3>
+              <p>Local, production-minded previews with guardrails built in.</p>
             </div>
-            <div className="pipeline-line" />
-            <div className="pipeline-step">
-              <GitBranch />
-              <span>
-                <b>ApplicationSet</b>
-                <small>discovers pull request</small>
-              </span>
-              <i>01</i>
+            <div className="project-card-visual eee-card-visual" aria-label="Preview environment workflow">
+              <small>PR #42 OPENED</small>
+              <div className="mini-pipeline"><span>Discover</span><ArrowRight size={14}/><span>Provision</span><ArrowRight size={14}/><span>Deploy</span></div>
+              <strong>env-pr-42 <b>READY</b></strong>
             </div>
-            <div className="pipeline-step">
-              <Cloud />
-              <span>
-                <b>Terraform + LocalStack</b>
-                <small>provisions isolated resources</small>
-              </span>
-              <i>02</i>
-            </div>
-            <div className="pipeline-step">
-              <Server />
-              <span>
-                <b>Helm + Argo CD</b>
-                <small>deploys env-pr-42</small>
-              </span>
-              <i>03</i>
-            </div>
-            <div className="preview-ready">
-              <Shield size={18} />
-              <span>pr42.local.dev</span>
-              <b>READY</b>
-            </div>
-          </div>
-          <div className="project-copy">
-            <div className="project-mark">
-              <Terminal size={28} />
-              <span>EEE</span>
-            </div>
-            <h3>
-              Every pull request gets
-              <br />
-              <em>its own environment.</em>
-            </h3>
-            <p>
-              Production-minded guardrails, without a cloud bill. A fully local
-              preview-environment platform that models PR discovery, isolated
-              infrastructure, GitOps deployment, governance checks, and
-              stale-environment cleanup.
-            </p>
             <div className="project-links">
-              <a
-                href="https://github.com/simxr/Ephemeral-Environment-Engine"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Source <ArrowUpRight size={15} />
-              </a>
+              <a href="https://github.com/simxr/Ephemeral-Environment-Engine" target="_blank" rel="noreferrer">Source <ArrowUpRight size={15}/></a>
             </div>
-          </div>
-        </div>
-        <div className="project-foot">
-          <span>PR-isolated namespaces</span>
-          <span>Least-privilege mock IAM</span>
-          <span>Dry-run cleanup + policy gates</span>
+          </article>
         </div>
       </section>
 
