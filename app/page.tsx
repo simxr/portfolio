@@ -619,10 +619,7 @@ export default function Home() {
           <span>04</span> Start a conversation
         </p>
         <h2>
-          Let&apos;s build
-          <br />
-          <em key={contactWords[wordIndex]}>{contactWords[wordIndex]}</em>
-          <br />
+          Let&apos;s build <em key={contactWords[wordIndex]}>{contactWords[wordIndex]}</em>{" "}
           together.
         </h2>
         <div className="contact-side">

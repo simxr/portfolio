@@ -1886,12 +1886,12 @@ button {
 .project-card .project-links a { padding: 9px 11px; }
 
 .contact {
-  min-height: 560px;
-  padding: 116px 7vw 34px;
+  min-height: 440px;
+  padding: 92px 7vw 28px;
 }
-.contact > .section-kicker { top: 68px; }
-.contact h2 { font-size: clamp(46px, 5.6vw, 82px); }
-.contact-side p { margin: 16px 0; }
+.contact > .section-kicker { top: 46px; }
+.contact h2 { font-size: clamp(40px, 4.8vw, 68px); }
+.contact-side p { margin: 12px 0; }
 .footer-meta { margin-top: 0; }
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
@@ -2134,10 +2134,13 @@ button {
   .project-card-visual { min-height: 126px; }
   .contact {
     min-height: auto;
-    padding: 96px 24px 30px;
+    gap: 18px;
+    padding: 76px 24px 26px;
   }
-  .contact > .section-kicker { top: 56px; }
-  .contact h2 { font-size: clamp(40px, 9vw, 54px); }
+  .contact > .section-kicker { top: 34px; }
+  .contact h2 { font-size: clamp(36px, 9vw, 46px); }
+  .contact-side > a { font-size: 15px; }
+  .contact-side p { font-size: 14px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html {
