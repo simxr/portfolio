@@ -471,8 +471,15 @@ export default function Home() {
             </article>
             <article>
               <span>Certification</span>
-              <strong>AWS Cloud Practitioner</strong>
-              <small>AWS Certified</small>
+              <a
+                className="credential-link"
+                href="https://www.credly.com/badges/e8c982dc-88f2-43ee-8bf6-e8e307488314"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <strong>AWS Cloud Practitioner <ArrowUpRight size={14} /></strong>
+                <small>View verified credential</small>
+              </a>
             </article>
           </div>
         </div>
